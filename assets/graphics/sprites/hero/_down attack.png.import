@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ii15erpkdyte"
-path="res://.godot/imported/_down idle.png-a98ec4f4c14ef680517577ad85fb94b2.ctex"
+uid="uid://coamcwllikd4d"
+path="res://.godot/imported/_down attack.png-5ff03e3824cef68f483c97ce634e0aaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_down idle.png"
-dest_files=["res://.godot/imported/_down idle.png-a98ec4f4c14ef680517577ad85fb94b2.ctex"]
+source_file="res://assets/graphics/sprites/hero/_down attack.png"
+dest_files=["res://.godot/imported/_down attack.png-5ff03e3824cef68f483c97ce634e0aaf.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0l7gn2o4o06t"
-path="res://.godot/imported/_side walk.png-d94a8c21bd94bcb1ef62ef66e0c998b7.ctex"
+uid="uid://gptdcjvgaw2o"
+path="res://.godot/imported/_up walk.png-b5ac6cfbb203d166188e2c1527d3dbbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_side walk.png"
-dest_files=["res://.godot/imported/_side walk.png-d94a8c21bd94bcb1ef62ef66e0c998b7.ctex"]
+source_file="res://assets/graphics/sprites/hero/_up walk.png"
+dest_files=["res://.godot/imported/_up walk.png-b5ac6cfbb203d166188e2c1527d3dbbd.ctex"]
 
 [params]
 

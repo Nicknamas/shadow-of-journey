@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l2f4eut46fw0"
-path="res://.godot/imported/_pick up.png-64ed3ddaf27bb5a456dc6a0b5dacbc09.ctex"
+uid="uid://c8su1dr6j1vxw"
+path="res://.godot/imported/_side attack.png-88b901a2bf55f0f12371179f6775191b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_pick up.png"
-dest_files=["res://.godot/imported/_pick up.png-64ed3ddaf27bb5a456dc6a0b5dacbc09.ctex"]
+source_file="res://assets/graphics/sprites/hero/_side attack.png"
+dest_files=["res://.godot/imported/_side attack.png-88b901a2bf55f0f12371179f6775191b.ctex"]
 
 [params]
 

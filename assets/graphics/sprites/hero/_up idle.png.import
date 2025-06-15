@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ubuxihkgmw4"
-path="res://.godot/imported/_side attack.png-c1e54fba2a2d52f312cc09c01df1f888.ctex"
+uid="uid://c5xdimvh1n1c2"
+path="res://.godot/imported/_up idle.png-c2323040bc7b1ea0fbf27c84baece026.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_side attack.png"
-dest_files=["res://.godot/imported/_side attack.png-c1e54fba2a2d52f312cc09c01df1f888.ctex"]
+source_file="res://assets/graphics/sprites/hero/_up idle.png"
+dest_files=["res://.godot/imported/_up idle.png-c2323040bc7b1ea0fbf27c84baece026.ctex"]
 
 [params]
 

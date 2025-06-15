@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciaqor30irmqb"
-path="res://.godot/imported/_up idle.png-86d9f46ef362e665721471dca729fea5.ctex"
+uid="uid://dlpth88kvvpnc"
+path="res://.godot/imported/_side idle.png-6cb169a0aa21403d8f5ddfb669d9311f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_up idle.png"
-dest_files=["res://.godot/imported/_up idle.png-86d9f46ef362e665721471dca729fea5.ctex"]
+source_file="res://assets/graphics/sprites/hero/_side idle.png"
+dest_files=["res://.godot/imported/_side idle.png-6cb169a0aa21403d8f5ddfb669d9311f.ctex"]
 
 [params]
 

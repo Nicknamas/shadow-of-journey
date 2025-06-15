@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgtsng54pjyf4"
-path="res://.godot/imported/_up attack.png-9c173596b8491b5fb5266e832d77371b.ctex"
+uid="uid://bf6gpyb6furwv"
+path="res://.godot/imported/_pick up.png-7a014b7af30afe2e65ccb626c8ca8e26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_up attack.png"
-dest_files=["res://.godot/imported/_up attack.png-9c173596b8491b5fb5266e832d77371b.ctex"]
+source_file="res://assets/graphics/sprites/hero/_pick up.png"
+dest_files=["res://.godot/imported/_pick up.png-7a014b7af30afe2e65ccb626c8ca8e26.ctex"]
 
 [params]
 

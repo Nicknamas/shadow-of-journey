@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm0wqdqqk4sok"
-path="res://.godot/imported/_down walk.png-93d2ec6e5e46f10b2d5f9dd3e5e2f6fd.ctex"
+uid="uid://uqe4wsgd6uli"
+path="res://.godot/imported/_down walk.png-e5496e14c4d3079b164168cb24e9e873.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/hero/sprites/_down walk.png"
-dest_files=["res://.godot/imported/_down walk.png-93d2ec6e5e46f10b2d5f9dd3e5e2f6fd.ctex"]
+source_file="res://assets/graphics/sprites/hero/_down walk.png"
+dest_files=["res://.godot/imported/_down walk.png-e5496e14c4d3079b164168cb24e9e873.ctex"]
 
 [params]
 

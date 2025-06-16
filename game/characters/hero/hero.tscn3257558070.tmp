@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cl4yycurlmo4i"]
+[gd_scene load_steps=42 format=3 uid="uid://cu6vpc23bcwgf"]
 
 [ext_resource type="Script" uid="uid://dxr88wfrm3cjy" path="res://game/characters/hero/hero.gd" id="1_xdfo1"]
 [ext_resource type="Texture2D" uid="uid://dqf0agai62v7a" path="res://assets/graphics/sprites/hero/_side walk.png" id="2_2iuvy"]
@@ -272,7 +272,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_xdfo1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

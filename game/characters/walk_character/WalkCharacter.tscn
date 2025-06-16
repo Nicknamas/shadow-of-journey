@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3yyxdyd13yhc"]
+
+[ext_resource type="Script" uid="uid://5pfqrsxftf0u" path="res://game/characters/walk_character/walk_character.gd" id="1_tr3sh"]
+
+[node name="WalkCharacter" type="CharacterBody2D"]
+script = ExtResource("1_tr3sh")

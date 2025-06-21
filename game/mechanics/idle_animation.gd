@@ -1,4 +1,4 @@
-class_name IdleAnimation extends Node
+class_name IdleAnimation extends Node2D
 
 enum LAST_DIRECTIONS { LEFT = -1, RIGHT = 1, DOWN = -2, UP = 2 }
 

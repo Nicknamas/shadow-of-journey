@@ -1,4 +1,4 @@
-class_name WalkAnimation extends Node
+class_name WalkAnimation extends Node2D
 
 var _animated_sprite: AnimatedSprite2D
 enum DIRECTION { UP = 2, RIGHT = 1, LEFT = -1, DOWN = -2 }

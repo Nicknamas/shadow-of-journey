@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3yyxdyd13yhc"]
+[gd_scene load_steps=3 format=3 uid="uid://d3yyxdyd13yhc"]
 
-[ext_resource type="Script" uid="uid://5pfqrsxftf0u" path="res://game/characters/walk_character/walk_character.gd" id="1_tr3sh"]
+[ext_resource type="Script" uid="uid://5pfqrsxftf0u" path="res://game/mechanics/walk_animation.gd" id="1_tr3sh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tr3sh"]
 
 [node name="WalkCharacter" type="CharacterBody2D"]
 script = ExtResource("1_tr3sh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tr3sh")

@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="NewGame"
-run/main_scene="uid://d2awtg5oc20sl"
+run/main_scene="uid://bo6ex834d3d0m"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/size/window_width_override=1280
+window/size/window_height_override=1024
 
 [editor]
 

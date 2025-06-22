@@ -362,6 +362,7 @@ script = SubResource("GDScript_d4mqx")
 [node name="WalkCharacter" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("2_w0uwg")]
 script = ExtResource("2_25h8c")
 _animated_sprite = NodePath("../AnimatedSprite2D")
+debug = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)

@@ -1,6 +1,7 @@
 class_name MoveAnimation extends Node2D
 
 @export var _animated_sprite: AnimatedSprite2D
+@export var debug: bool = false
 
 enum ANIMATION_STATES { WALK, IDLE }
 enum LAST_DIRECTIONS { LEFT, RIGHT, DOWN, UP }
@@ -26,8 +27,9 @@ func _handle_input() -> void:
 		play_animation(ANIMATION_STATES.IDLE, vector_movement)
 
 
-func _logging_vector(vector_movement: Vector2) -> void:
-	print(vector_movement)
+func _logging_vector(logging_expression: Variant) -> void:
+	if debug:
+		print(logging_expression)
 
 
 func _ready():

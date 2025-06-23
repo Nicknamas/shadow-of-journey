@@ -1,13 +1,15 @@
 extends Node2D
 
 @export var _dimensions : Vector2i = Vector2(7, 5)
-@export var _start_room : Room = _create_room("Start")
+@export var _start_room : Room
 @export var _critical_path_length : int = 6
 @export var _branches : int = 3
 @export var _branches_length : Vector2i = Vector2i(1, 3)
+@export var room_scene : PackedScene
+@export var room_script : Script
 
-var scene = preload("res://game/levels/room.tscn")
-var instance : Node 
+
+var instance : Room
 var _branch_canditates : Array[Room]
 var dungeon : Array
 var count_rooms : int
@@ -25,20 +27,21 @@ const ROOM_TYPES = {
 		#print(get_children()[5])
 
 
-func _ready():
-	_generate_dungeon()
-	#instance = scene.instantiate()
-	#create_dungeon()
-
-func create_dungeon():
-	for i in count_rooms:
-		add_child(instance.duplicate())
-	for child in get_children():
-		if child.name == "Room":
-			child.set_script(load("res://game/levels/room.gd"))
+func _ready() -> void:
+	self._generate_dungeon()
+	self.render_dungeon()
 
 
-func _generate_dungeon(): 
+func render_dungeon() -> void:
+	for row in dungeon:
+		for element in row:
+			if element is Room:
+				get_parent().add_child.call_deferred(element)
+				element.global_position = Vector2(element.coords.x * 250, element.coords.y * 250)
+
+
+func _generate_dungeon() -> void:
+	self.instance = self.room_scene.instantiate()
 	_clear_values()
 	_initializy_dungeons()
 	_place_entrace()
@@ -49,9 +52,9 @@ func _generate_dungeon():
 
 
 func _clear_values() -> void:
-	dungeon.clear()
-	_branch_canditates.clear()
-	_start_room = _create_room(ROOM_TYPES.START)
+	self.dungeon.clear()
+	self._branch_canditates.clear()
+	self._start_room = _create_room(ROOM_TYPES.START)
 
 
 func _initializy_dungeons() -> void:
@@ -69,7 +72,9 @@ func _place_entrace() -> void:
 
 
 func _create_room(type_room : String, init_exit : Vector2i = Vector2i(-1, -1)) -> Room:
-	return Room.new(type_room, init_exit)
+	var room: Room = self.instance.duplicate()
+	room.set_values(type_room, init_exit)
+	return room
 
 
 func _generate_critical_path() -> void:

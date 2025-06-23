@@ -1,18 +1,17 @@
-[gd_scene load_steps=56 format=3 uid="uid://cl4yycurlmo4i"]
+[gd_scene load_steps=57 format=3 uid="uid://cl4yycurlmo4i"]
 
+[ext_resource type="Script" uid="uid://mqa1of32b4fy" path="res://game/characters/hero/hero.gd" id="1_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://dqf0agai62v7a" path="res://assets/graphics/sprites/hero/_side walk.png" id="2_2iuvy"]
-[ext_resource type="Script" uid="uid://cdrl3hen87ssh" path="res://game/mechanics/move_animation.gd" id="2_25h8c"]
 [ext_resource type="Texture2D" uid="uid://dlpth88kvvpnc" path="res://assets/graphics/sprites/hero/_side idle.png" id="2_b7sbx"]
 [ext_resource type="Texture2D" uid="uid://cj6p2nd750ha" path="res://assets/graphics/sprites/hero/_down idle.png" id="2_d4mqx"]
-[ext_resource type="PackedScene" uid="uid://d3yyxdyd13yhc" path="res://game/characters/walk_character/WalkCharacter.tscn" id="2_w0uwg"]
+[ext_resource type="PackedScene" uid="uid://bqskdosjhoafe" path="res://game/utils/MoveAnimationContoller.tscn" id="2_w0uwg"]
+[ext_resource type="Script" uid="uid://cdrl3hen87ssh" path="res://game/utils/movement/move_animation.gd" id="3_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://coamcwllikd4d" path="res://assets/graphics/sprites/hero/_down attack.png" id="3_e0e3g"]
 [ext_resource type="Texture2D" uid="uid://uqe4wsgd6uli" path="res://assets/graphics/sprites/hero/_down walk.png" id="3_nphcy"]
 [ext_resource type="Texture2D" uid="uid://c8su1dr6j1vxw" path="res://assets/graphics/sprites/hero/_side attack.png" id="4_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://c5xdimvh1n1c2" path="res://assets/graphics/sprites/hero/_up idle.png" id="4_w0uwg"]
 [ext_resource type="Texture2D" uid="uid://gptdcjvgaw2o" path="res://assets/graphics/sprites/hero/_up walk.png" id="5_td4rw"]
 [ext_resource type="Texture2D" uid="uid://i6g1v0ki6miq" path="res://assets/graphics/sprites/hero/_up attack.png" id="5_xuqrm"]
-
-[sub_resource type="GDScript" id="GDScript_d4mqx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrk7r"]
 atlas = ExtResource("3_e0e3g")
@@ -356,18 +355,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Hero" type="Node2D"]
-script = SubResource("GDScript_d4mqx")
+[sub_resource type="CircleShape2D" id="CircleShape2D_e0e3g"]
 
-[node name="WalkCharacter" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("2_w0uwg")]
-script = ExtResource("2_25h8c")
+[node name="Hero" type="CharacterBody2D"]
+script = ExtResource("1_aeiyj")
+
+[node name="MoveAnimationController" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("2_w0uwg")]
+script = ExtResource("3_aeiyj")
 _animated_sprite = NodePath("../AnimatedSprite2D")
-debug = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_liakx")
 animation = &"idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e0e3g")

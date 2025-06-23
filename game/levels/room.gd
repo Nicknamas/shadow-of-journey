@@ -1,4 +1,4 @@
-class_name Room extends Node
+class_name Room extends Node2D
 
 var scene = preload("res://game/levels/room.tscn")
 
@@ -10,16 +10,19 @@ var scene = preload("res://game/levels/room.tscn")
 @export var exits: Array[Vector2i]
 
 
-func _init(
-		type_room : String,
-		init_exit: Vector2i = Vector2i(-1, -1),
-		coords : Vector2i = Vector2i(-1, -1)
-	) -> void:
-	self.init_exit = init_exit
-	self.coords = coords
-	self.type_room = type_room
+func _init() -> void:
 	self.count_exits = randi_range(2, 4)
 	self._define_exits_for_room()
+
+
+func set_values(
+	type_room : String = "ada",
+	init_exit: Vector2i = Vector2i(-1, -1),
+	coords : Vector2i = Vector2i(-1, -1)
+	) -> void:
+	self.type_room = type_room
+	self.init_exit = init_exit
+	self.coords = coords
 
 
 func init_scene() -> void:

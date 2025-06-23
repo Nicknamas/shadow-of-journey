@@ -9,6 +9,13 @@ extends Node2D
 var _branch_canditates : Array[Room]
 var dungeon: Array
 
+const ROOM_TYPES = {
+	"START": "start",
+	"CRITICAL": "critical",
+	"START_BRANCH": "start-branch",
+	"BRANCH": "branch"
+}
+
 
 func _process(delta):
 	if Input.is_action_pressed("left"):
@@ -31,7 +38,7 @@ func create_dungeon():
 func _clear_values() -> void:
 	dungeon.clear()
 	_branch_canditates.clear()
-	_start_room = _create_room("Start")
+	_start_room = _create_room(ROOM_TYPES.START)
 
 
 func _initializy_dungeons() -> void:
@@ -53,7 +60,7 @@ func _create_room(type_room : String, init_exit : Vector2i = Vector2i(-1, -1)) -
 
 
 func _generate_critical_path() -> void:
-	_generate_path(_start_room, _critical_path_length, "St")
+	_generate_path(_start_room, _critical_path_length, ROOM_TYPES.START)
 
 
 func _is_includes_coords_in_dungeon(room: Room, direction: Vector2i) -> bool:
@@ -63,7 +70,7 @@ func _is_includes_coords_in_dungeon(room: Room, direction: Vector2i) -> bool:
 
 
 func _is_critical_path_connect_itself(current_room : Room, direction : Vector2i) -> bool:
-	if current_room.type_room != "cr":
+	if current_room.type_room != ROOM_TYPES.CRITICAL:
 		return false
 
 	var new_position = current_room.coords + direction
@@ -77,7 +84,7 @@ func _is_critical_path_connect_itself(current_room : Room, direction : Vector2i)
 			continue
 		if coords.y >= dungeon[coords.x].size():
 			continue
-		if str(dungeon[coords.x][coords.y]) in ["cr", "St", "sb"]:
+		if str(dungeon[coords.x][coords.y]) in [ROOM_TYPES.CRITICAL, ROOM_TYPES.START, ROOM_TYPES.START_BRANCH]:
 			count_connection += 1
 	return count_connection > 1
 
@@ -98,10 +105,10 @@ func _generate_path(from_room : Room, length : int, marker : String) -> bool:
 			var new_room = _create_room(marker, -direction)
 			new_room.coords = new_coords
 			dungeon[new_room.coords.x][new_room.coords.y] = marker[0] + marker[1]
-			if marker == "St":
-				marker = "cr"
-			if marker == "sb":
-				marker = "br"
+			if marker == ROOM_TYPES.START:
+				marker = ROOM_TYPES.CRITICAL
+			if marker == ROOM_TYPES.START_BRANCH:
+				marker = ROOM_TYPES.BRANCH
 			if length > 1:
 				_branch_canditates.append(new_room)
 			if _generate_path(new_room, length - 1, marker):
@@ -129,7 +136,7 @@ func _generate_branches() -> void:
 	var candidate : Room
 	while branches_created < _branches and _branch_canditates.size():
 		candidate = _branch_canditates[randi_range(0, _branch_canditates.size() - 1)]
-		if _generate_path(candidate, randi_range(_branches_length.x, _branches_length.y), "sb"):
+		if _generate_path(candidate, randi_range(_branches_length.x, _branches_length.y), ROOM_TYPES.START_BRANCH):
 			branches_created += 1
 		else:
 			_branch_canditates.erase(candidate)

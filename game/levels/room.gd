@@ -1,33 +1,32 @@
 class_name Room extends Node2D
 
-var scene = preload("res://game/levels/room.tscn")
-
 # main | branch | boss | start
-@export var type_room : String
-@export var init_exit : Vector2i
-@export var coords: Vector2i
-@export var count_exits : int
-@export var exits: Array[Vector2i]
+var type_room : String
+var init_exit : Vector2i
+var coords: Vector2i
+var count_exits : int
+var exits: Array[Vector2i]
 
+var size : Vector2i
 
-func _init() -> void:
+func _init():
 	self.count_exits = randi_range(2, 4)
 	self._define_exits_for_room()
 
 
+func _ready():
+	var tile_map_layer = get_node("TileMapLayer") as TileMapLayer
+	self.size = tile_map_layer.get_used_rect().size
+
+
 func set_values(
-	type_room : String = "ada",
-	init_exit: Vector2i = Vector2i(-1, -1),
-	coords : Vector2i = Vector2i(-1, -1)
+	_type_room : String = "ada",
+	_init_exit: Vector2i = Vector2i(-1, -1),
+	_coords : Vector2i = Vector2i(-1, -1)
 	) -> void:
-	self.type_room = type_room
-	self.init_exit = init_exit
-	self.coords = coords
-
-
-func init_scene() -> void:
-	var instance = scene.instantiate()
-	add_child(instance)
+	self.type_room = _type_room
+	self.init_exit = _init_exit
+	self.coords = _coords
 
 
 func _define_exits_for_room() -> void:

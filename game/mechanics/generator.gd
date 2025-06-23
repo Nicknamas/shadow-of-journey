@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var _dimensions : Vector2i = Vector2(7, 5)
+@export var _dimensions : Vector2i = Vector2(4, 4)
 @export var _start_room : Room
 @export var _critical_path_length : int = 6
 @export var _branches : int = 3
@@ -9,45 +9,57 @@ extends Node2D
 @export var room_script : Script
 
 
-var instance : Room
+var room_instance : Room
 var _branch_canditates : Array[Room]
 var dungeon : Array
 var count_rooms : int
+var tilemap_size : Vector2i
+const texture_size : int = 16
 
 const ROOM_TYPES = {
 	"START": "start",
 	"CRITICAL": "critical",
-	"START_BRANCH": "start-branch",
+	"START_BRANCH": "sb",
 	"BRANCH": "branch"
 }
 
 
-#func _process(delta):
-	#if Input.is_action_pressed("left"):
-		#print(get_children()[5])
-
-
 func _ready() -> void:
-	self._generate_dungeon()
+	await self._generate_dungeon()
 	self.render_dungeon()
+	self.init_position_hero()
+
+
+func init_position_hero() -> void:
+	var hero = get_tree().get_first_node_in_group("Hero") as Node2D
+	hero.global_position = Vector2(
+		self._start_room.coords.x * self.tilemap_size.x * self.texture_size, 
+		self._start_room.coords.y * self.tilemap_size.y * self.texture_size
+		)
 
 
 func render_dungeon() -> void:
 	for row in dungeon:
-		for element in row:
-			if element is Room:
-				get_parent().add_child.call_deferred(element)
-				element.global_position = Vector2(element.coords.x * 250, element.coords.y * 250)
+		for room in row:
+			if room and room is Room:
+				get_parent().add_child.call_deferred(room)
+				var room_position_x = room.coords.x * tilemap_size.x * self.texture_size
+				var room_position_y = room.coords.y * tilemap_size.y * self.texture_size
+				room.global_position = Vector2(room_position_x, room_position_y)
 
 
 func _generate_dungeon() -> void:
-	self.instance = self.room_scene.instantiate()
+	self.room_instance = self.room_scene.instantiate()
+	await get_parent().ready
+	get_parent().add_child(self.room_instance)
+	if !self.room_instance.is_node_ready():
+		await self.room_instance.ready
+	self.tilemap_size = self.room_instance.size
 	_clear_values()
 	_initializy_dungeons()
 	_place_entrace()
 	_generate_critical_path()
 	_generate_branches()
-	print(count_rooms)
 	_print_dungeons()
 
 
@@ -69,16 +81,17 @@ func _place_entrace() -> void:
 		_start_room.coords.x = randi_range(0, _dimensions.x - 1)
 	if _start_room.coords.y < 0 or _start_room.coords.y > _dimensions.y:
 		_start_room.coords.y = randi_range(0, _dimensions.y - 1)
+	dungeon[_start_room.coords.x][_start_room.coords.y] = _start_room
 
 
 func _create_room(type_room : String, init_exit : Vector2i = Vector2i(-1, -1)) -> Room:
-	var room: Room = self.instance.duplicate()
+	var room: Room = self.room_instance.duplicate()
 	room.set_values(type_room, init_exit)
 	return room
 
 
 func _generate_critical_path() -> void:
-	_generate_path(_start_room, _critical_path_length, ROOM_TYPES.START)
+	_generate_path(_start_room, _critical_path_length, ROOM_TYPES.CRITICAL)
 
 
 func _is_includes_coords_in_dungeon(room: Room, direction: Vector2i) -> bool:
@@ -124,8 +137,6 @@ func _generate_path(from_room : Room, length : int, marker : String) -> bool:
 			var new_room = _create_room(marker, -direction)
 			new_room.coords = new_coords
 			dungeon[new_room.coords.x][new_room.coords.y] = new_room
-			if marker == ROOM_TYPES.START:
-				marker = ROOM_TYPES.CRITICAL
 			if marker == ROOM_TYPES.START_BRANCH:
 				marker = ROOM_TYPES.BRANCH
 			if length > 1:
@@ -164,11 +175,11 @@ func _generate_branches() -> void:
 
 func _print_dungeons() -> void:
 	var dungeon_as_string: String = ""
-	for y in range(_dimensions.y - 1, -1, -1):
+	for y in _dimensions.y:
 		for x in _dimensions.x:
 			if dungeon[x][y]:
-				dungeon_as_string += "[" + dungeon[x][y].type_room[0] + "]"
+				dungeon_as_string += "[" + dungeon[x][y].type_room[0] + dungeon[x][y].type_room[1] + "]"
 			else:
-				dungeon_as_string += "   "
+				dungeon_as_string += "    "
 		dungeon_as_string += "\n"
 	print(dungeon_as_string)

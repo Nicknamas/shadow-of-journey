@@ -37,5 +37,5 @@ func _ready():
 	_idle_controller = IdleAnimation.new(_animated_sprite)
 
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	_handle_input()

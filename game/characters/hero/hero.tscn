@@ -357,7 +357,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e0e3g"]
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 script = ExtResource("1_aeiyj")
 
 [node name="MoveAnimationController" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("2_w0uwg")]

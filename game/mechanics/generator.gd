@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var dimensions : Vector2i = Vector2(4, 4)
-@export var start_room : Room
+@export var start : Room
 @export var critical_path_length : int = 6
 @export var branches : int = 3
 @export var branches_length : Vector2i = Vector2i(1, 3)
@@ -14,6 +14,7 @@ var branch_canditates : Array[Room]
 var dungeon : Array
 var count_rooms : int
 var tilemap_size : Vector2i
+var room_size : int
 const texture_size : int = 16
 
 const ROOM_TYPES = {
@@ -32,9 +33,14 @@ func _ready() -> void:
 
 func init_position_hero() -> void:
 	var hero = get_tree().get_first_node_in_group("Hero") as Node2D
+	var signed_coords = self.start.coords.sign()
+	if signed_coords.x == 0:
+		signed_coords.x = 1
+	if signed_coords.y == 0:
+		signed_coords.y = 1
 	hero.global_position = Vector2(
-		self.start_room.coords.x * self.tilemap_size.x * self.texture_size, 
-		self.start_room.coords.y * self.tilemap_size.y * self.texture_size
+		self.start.coords.x * self.room_size + 112 * signed_coords.x, 
+		self.start.coords.y * self.room_size + 112 * signed_coords.y
 	)
 
 
@@ -43,8 +49,8 @@ func render_dungeon() -> void:
 		for room in row:
 			if room and room is Room:
 				get_parent().add_child.call_deferred(room)
-				var room_position_x = room.coords.x * tilemap_size.x * self.texture_size
-				var room_position_y = room.coords.y * tilemap_size.y * self.texture_size
+				var room_position_x = room.coords.x * self.room_size
+				var room_position_y = room.coords.y * self.room_size
 				room.global_position = Vector2(room_position_x, room_position_y)
 
 
@@ -55,6 +61,7 @@ func generate_dungeon() -> void:
 	if !self.room_instance.is_node_ready():
 		await self.room_instance.ready
 	self.tilemap_size = self.room_instance.size
+	self.room_size = self.tilemap_size.x * self.texture_size
 	clear_values()
 	initializy_dungeons()
 	place_entrace()
@@ -66,7 +73,7 @@ func generate_dungeon() -> void:
 func clear_values() -> void:
 	self.dungeon.clear()
 	self.branch_canditates.clear()
-	self.start_room = create_room(ROOM_TYPES.START)
+	self.start = create_room(ROOM_TYPES.START)
 
 
 func initializy_dungeons() -> void:
@@ -77,11 +84,11 @@ func initializy_dungeons() -> void:
 
 
 func place_entrace() -> void:
-	if start_room.coords.x < 0 or start_room.coords.x > dimensions.x:
-		start_room.coords.x = randi_range(0, dimensions.x - 1)
-	if start_room.coords.y < 0 or start_room.coords.y > dimensions.y:
-		start_room.coords.y = randi_range(0, dimensions.y - 1)
-	dungeon[start_room.coords.x][start_room.coords.y] = start_room
+	if start.coords.x < 0 or start.coords.x > dimensions.x:
+		start.coords.x = randi_range(0, dimensions.x - 1)
+	if start.coords.y < 0 or start.coords.y > dimensions.y:
+		start.coords.y = randi_range(0, dimensions.y - 1)
+	dungeon[start.coords.x][start.coords.y] = start
 
 
 func create_room(type_room : String, init_exit : Vector2i = Vector2i(-1, -1)) -> Room:
@@ -91,7 +98,7 @@ func create_room(type_room : String, init_exit : Vector2i = Vector2i(-1, -1)) ->
 
 
 func generate_critical_path() -> void:
-	generate_path(start_room, critical_path_length, ROOM_TYPES.CRITICAL)
+	generate_path(start, critical_path_length, ROOM_TYPES.CRITICAL)
 
 
 func is_includes_coords_in_dungeon(room: Room, direction: Vector2i) -> bool:

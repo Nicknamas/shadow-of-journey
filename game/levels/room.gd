@@ -1,5 +1,6 @@
-class_name Room extends Node2D
+class_name Room extends Node
 
+var scene = preload("res://game/levels/room.tscn")
 
 # main | branch | boss | start
 @export var type_room : String
@@ -19,6 +20,11 @@ func _init(
 	self.type_room = type_room
 	self.count_exits = randi_range(2, 4)
 	self._define_exits_for_room()
+
+
+func init_scene() -> void:
+	var instance = scene.instantiate()
+	add_child(instance)
 
 
 func _define_exits_for_room() -> void:

@@ -6,8 +6,11 @@ extends Node2D
 @export var _branches : int = 3
 @export var _branches_length : Vector2i = Vector2i(1, 3)
 
+var scene = preload("res://game/levels/room.tscn")
+var instance : Node 
 var _branch_canditates : Array[Room]
-var dungeon: Array
+var dungeon : Array
+var count_rooms : int
 
 const ROOM_TYPES = {
 	"START": "start",
@@ -17,21 +20,31 @@ const ROOM_TYPES = {
 }
 
 
-func _process(delta):
-	if Input.is_action_pressed("left"):
-		create_dungeon()
+#func _process(delta):
+	#if Input.is_action_pressed("left"):
+		#print(get_children()[5])
 
 
 func _ready():
-	create_dungeon()
-
+	_generate_dungeon()
+	#instance = scene.instantiate()
+	#create_dungeon()
 
 func create_dungeon():
+	for i in count_rooms:
+		add_child(instance.duplicate())
+	for child in get_children():
+		if child.name == "Room":
+			child.set_script(load("res://game/levels/room.gd"))
+
+
+func _generate_dungeon(): 
 	_clear_values()
 	_initializy_dungeons()
 	_place_entrace()
 	_generate_critical_path()
 	_generate_branches()
+	print(count_rooms)
 	_print_dungeons()
 
 
@@ -94,7 +107,8 @@ func _generate_path(from_room : Room, length : int, marker : String) -> bool:
 		return true
 	var current_room : Room = from_room
 	var direction : Vector2i = _generate_random_direction()
-
+	count_rooms += 1
+	
 	for i in 4:
 		if (
 			_is_includes_coords_in_dungeon(current_room, direction) and 
@@ -104,7 +118,7 @@ func _generate_path(from_room : Room, length : int, marker : String) -> bool:
 			var new_coords = current_room.coords + direction
 			var new_room = _create_room(marker, -direction)
 			new_room.coords = new_coords
-			dungeon[new_room.coords.x][new_room.coords.y] = marker[0] + marker[1]
+			dungeon[new_room.coords.x][new_room.coords.y] = new_room
 			if marker == ROOM_TYPES.START:
 				marker = ROOM_TYPES.CRITICAL
 			if marker == ROOM_TYPES.START_BRANCH:
@@ -117,6 +131,7 @@ func _generate_path(from_room : Room, length : int, marker : String) -> bool:
 				_branch_canditates.erase(new_room)
 				dungeon[new_room.coords.x][new_room.coords.y] = 0
 		direction = Vector2(direction.y, -direction.x)
+	count_rooms -= 1
 	return false
 
 
@@ -147,8 +162,8 @@ func _print_dungeons() -> void:
 	for y in range(_dimensions.y - 1, -1, -1):
 		for x in _dimensions.x:
 			if dungeon[x][y]:
-				dungeon_as_string += "[" + str(dungeon[x][y]) + "]"
+				dungeon_as_string += "[" + dungeon[x][y].type_room[0] + "]"
 			else:
-				dungeon_as_string += "    "
+				dungeon_as_string += "   "
 		dungeon_as_string += "\n"
 	print(dungeon_as_string)

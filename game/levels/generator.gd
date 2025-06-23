@@ -48,21 +48,21 @@ func _place_entrace() -> void:
 	dungeon[_start.x][_start.y] = "S"
 
 
+func _generate_critical_path() -> void:
+	_generate_path(_start, _critical_path_length, "c")
+
+
 func _is_includes_coords_in_dungeon(coords: Vector2i, direction: Vector2i) -> bool:
 	var includes_x_in_dungeon: bool = coords.x + direction.x >= 0 and coords.x + direction.x < _dimensions.x
 	var includes_y_in_dungeon: bool = coords.y + direction.y >= 0 and coords.y + direction.y < _dimensions.y
 	return includes_x_in_dungeon and includes_y_in_dungeon
 
-func _generate_critical_path() -> void:
-	_generate_path(_start, _critical_path_length, "c")
 
 func _generate_path(from : Vector2i, length : int, marker : String) -> bool:
 	if length == 0:
 		return true
 	var current : Vector2i = from
 	var direction : Vector2i
-	var new_x : int
-	var new_y : int
 	match randi_range(0, 3):
 		0:
 			direction = Vector2i.UP

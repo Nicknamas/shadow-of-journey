@@ -10,7 +10,11 @@ config_version=5
 
 [application]
 
-config/name="NewGame"
+config/name="Shadow Of Journey"
+config/name_localized={
+"ru_RU": ""
+}
+config/version="0.0.1"
 run/main_scene="uid://bo6ex834d3d0m"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

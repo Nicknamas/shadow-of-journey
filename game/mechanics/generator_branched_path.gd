@@ -10,6 +10,7 @@ func _ready():
 	if debug:
 		print("BRANCHED_PATH:")
 		super.print_dungeons()
+	self.init_room.hide()
 	super.render_dungeon()
 
 

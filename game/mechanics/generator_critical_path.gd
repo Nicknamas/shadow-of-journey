@@ -11,7 +11,6 @@ var branch_canditates : Array[Room]
 
 func _ready() -> void:
 	await self.generate_dungeon()
-	self.init_room.hide()
 	if debug:
 		print("CRITICAL_PATH:")
 		super.print_dungeons()

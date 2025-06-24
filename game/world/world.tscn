@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://bo6ex834d3d0m"]
+[gd_scene load_steps=10 format=4 uid="uid://bo6ex834d3d0m"]
 
 [ext_resource type="Texture2D" uid="uid://biwmvplooesk7" path="res://assets/graphics/sprites/world/world.png" id="1_k7f6b"]
 [ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/hero.tscn" id="2_4adp2"]
-[ext_resource type="Script" uid="uid://dqxo3j6o7k4k8" path="res://game/mechanics/generator.gd" id="3_dess5"]
+[ext_resource type="Script" uid="uid://b5vwni2a0jtg1" path="res://game/mechanics/generator_branched_path.gd" id="2_dess5"]
 [ext_resource type="PackedScene" uid="uid://4cl8rg2kcsix" path="res://game/levels/room.tscn" id="4_4adp2"]
-[ext_resource type="Script" uid="uid://c7xbfgohwu0qc" path="res://game/levels/room.gd" id="5_dess5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riwhw"]
 texture = ExtResource("1_k7f6b")
@@ -507,9 +506,8 @@ tile_map_data = PackedByteArray("AAAYAAoAAQA9ACUAAAAYAAsAAQA9ACYAAAAZAAgAAQA+ACM
 tile_set = SubResource("TileSet_3qf1m")
 
 [node name="ProcedureGenerator" type="Node2D" parent="."]
-script = ExtResource("3_dess5")
+script = ExtResource("2_dess5")
 room_scene = ExtResource("4_4adp2")
-room_script = ExtResource("5_dess5")
 
 [node name="Hero" parent="." instance=ExtResource("2_4adp2")]
 z_index = 1

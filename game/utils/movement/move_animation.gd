@@ -18,6 +18,7 @@ func play_animation(animation_type: ANIMATION_STATES, vector_movement: Vector2) 
 	if animation_type == ANIMATION_STATES.IDLE:
 		_idle_controller.play_animation_idle(last_direction)
 
+
 func _handle_input() -> void:
 	var vector_movement = Input.get_vector("left", "right", "down", "up")
 	_logging_vector(vector_movement)

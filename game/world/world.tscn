@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://biwmvplooesk7" path="res://assets/graphics/sprites/world/world.png" id="1_k7f6b"]
 [ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/hero.tscn" id="2_4adp2"]
-[ext_resource type="Script" path="res://game/mechanics/generator_branched_path.gd" id="2_dess5"]
+[ext_resource type="Script" uid="uid://b5vwni2a0jtg1" path="res://game/mechanics/generator_branched_path.gd" id="2_dess5"]
 [ext_resource type="PackedScene" uid="uid://4cl8rg2kcsix" path="res://game/levels/room.tscn" id="4_4adp2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riwhw"]

@@ -20,7 +20,7 @@ func play_animation(animation_type: ANIMATION_STATES, vector_movement: Vector2) 
 
 
 func _handle_input() -> void:
-	var vector_movement = Input.get_vector("left", "right", "down", "up")
+	var vector_movement = Input.get_vector("left", "right", "up", "down")
 	_logging_vector(vector_movement)
 	if vector_movement.x != 0 or vector_movement.y != 0:
 		play_animation(ANIMATION_STATES.WALK, vector_movement)

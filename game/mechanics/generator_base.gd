@@ -16,6 +16,7 @@ var init_room : Room
 
 
 func generate_dungeon() -> void:
+	print(ProjectSettings.get_setting("application/config/version"))
 	await self.init_init_room()
 	self.init_dungeons()
 	self.place_start()

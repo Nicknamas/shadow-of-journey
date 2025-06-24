@@ -1,17 +1,20 @@
 class_name ProcedureGeneratoreCriticalPath extends ProcedureGeneratorBase
 
 @export var critical_path_length : int = 6
+@export var debug : bool = false
 
 var count_rooms : int
 var tilemap_size : Vector2i
 var room_size : int
 const texture_size : int = 16
-
+var branch_canditates : Array[Room]
 
 func _ready() -> void:
 	await self.generate_dungeon()
 	self.init_room.hide()
-	super.print_dungeons()
+	if debug:
+		print("CRITICAL_PATH:")
+		super.print_dungeons()
 	self.set_position_hero_to_start()
 
 
@@ -41,10 +44,13 @@ func initializy_dungeons() -> void:
 
 func render_dungeon() -> void:
 	for row in dungeon:
+		print(row)
 		for room in row:
 			if room and room is Room:
 				self.get_parent().add_child.call_deferred(room)
 				self.set_position_room(room)
+	if debug:
+		print("count rooms: ", count_rooms)
 
 
 func set_position_room(room: Room) -> void:
@@ -76,6 +82,7 @@ func is_critical_path_connect_itself(current_room : Room, variant_direction : Ve
 			continue
 		if not dungeon[coords.x][coords.y]:
 			continue
+		print(dungeon[coords.x ][coords.y].type_room)
 		if str(dungeon[coords.x ][coords.y].type_room) in [
 				ROOM_TYPES.CRITICAL, 
 				ROOM_TYPES.START
@@ -93,9 +100,12 @@ func generate_paths(from_room : Room, length : int, marker : String) -> bool:
 	for i in 4:
 		if self.is_valid_critical_path(current_room, direction):
 			var new_room = self.get_new_roow_with_marker_and_coords(marker, current_room.coords, direction)
+			if length > 1:
+				self.branch_canditates.append(new_room)
 			if self.generate_paths(new_room, length - 1, marker):
 				return true
 			else:
+				self.branch_canditates.erase(new_room)
 				dungeon[new_room.coords.x][new_room.coords.y] = 0
 		direction = Vector2(direction.y, -direction.x)
 	count_rooms -= 1

@@ -507,6 +507,7 @@ tile_set = SubResource("TileSet_3qf1m")
 
 [node name="ProcedureGenerator" type="Node2D" parent="."]
 script = ExtResource("2_dess5")
+debug = true
 room_scene = ExtResource("4_4adp2")
 
 [node name="Hero" parent="." instance=ExtResource("2_4adp2")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://4cl8rg2kcsix"]
+[gd_scene load_steps=18 format=4 uid="uid://4cl8rg2kcsix"]
 
 [ext_resource type="Script" uid="uid://c7xbfgohwu0qc" path="res://game/levels/room.gd" id="1_aj767"]
 [ext_resource type="Texture2D" uid="uid://152a3rslwm42" path="res://assets/graphics/sprites/world/Tree_wall.png" id="3_1s0xu"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dcvmiou012krq" path="res://assets/graphics/sprites/world/enter_forest.png" id="5_3pdvo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3pdvo"]
-load_path = "res://.godot/imported/Tree Wall.png-7e0840f87e313caaa2a7b33a0c7182ae.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1s0xu"]
 texture = SubResource("CompressedTexture2D_3pdvo")
@@ -1278,8 +1277,6 @@ texture = ExtResource("5_3pdvo")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_h33xa")
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_3pdvo"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uhk4q"]
 texture = ExtResource("3_1s0xu")
 0:0/0 = 0
@@ -1605,7 +1602,6 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_uhk4q")
 sources/2 = SubResource("TileSetAtlasSource_3pdvo")
 sources/4 = SubResource("TileSetAtlasSource_rbx6k")
-pattern_0 = SubResource("TileMapPattern_3pdvo")
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_aj767")

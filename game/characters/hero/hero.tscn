@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=3 uid="uid://cl4yycurlmo4i"]
 
-[ext_resource type="Script" path="res://game/characters/hero/PlayerUnit.gd" id="1_aeiyj"]
+[ext_resource type="Script" uid="uid://48pqfxbloq7k" path="res://game/characters/hero/PlayerUnit.gd" id="1_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://dqf0agai62v7a" path="res://assets/graphics/sprites/hero/_side walk.png" id="2_2iuvy"]
 [ext_resource type="Texture2D" uid="uid://dlpth88kvvpnc" path="res://assets/graphics/sprites/hero/_side idle.png" id="2_b7sbx"]
 [ext_resource type="Texture2D" uid="uid://cj6p2nd750ha" path="res://assets/graphics/sprites/hero/_down idle.png" id="2_d4mqx"]

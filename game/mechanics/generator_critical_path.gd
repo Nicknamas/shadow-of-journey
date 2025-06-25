@@ -5,7 +5,7 @@ class_name ProcedureGeneratoreCriticalPath extends ProcedureGeneratorBase
 
 var count_rooms : int
 var tilemap_size : Vector2i
-var room_size : int
+var room_size : Vector2i
 const texture_size_in_pixels : int = 16
 var branch_canditates : Array[Room]
 
@@ -25,7 +25,7 @@ func generate_dungeon() -> void:
 
 func set_sizes_tiles() -> void:
 	self.tilemap_size = self.init_room.size
-	self.room_size = self.tilemap_size.x * self.texture_size_in_pixels
+	self.room_size = self.tilemap_size * self.texture_size_in_pixels
 
 
 func clear_values() -> void:
@@ -53,8 +53,8 @@ func render_dungeon() -> void:
 
 
 func set_position_room(room: Room) -> void:
-	var room_position_x = room.coords.x * self.room_size
-	var room_position_y = room.coords.y * self.room_size
+	var room_position_x = room.coords.x * self.room_size.x
+	var room_position_y = room.coords.y * self.room_size.y
 	room.global_position = Vector2(room_position_x, room_position_y)
 
 

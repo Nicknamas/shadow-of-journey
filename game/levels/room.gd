@@ -15,7 +15,7 @@ func _init():
 
 
 func _ready():
-	var tile_map_layer = get_node("TileMapLayer") as TileMapLayer
+	var tile_map_layer = get_node("Ground") as TileMapLayer
 	self.size = tile_map_layer.get_used_rect().size
 
 

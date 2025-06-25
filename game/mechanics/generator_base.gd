@@ -16,7 +16,6 @@ var init_room : Room
 
 
 func generate_dungeon() -> void:
-	print(ProjectSettings.get_setting("application/config/version"))
 	await self.init_init_room()
 	self.init_dungeons()
 	self.place_start()
@@ -66,8 +65,8 @@ func set_position_hero_to_start() -> void:
 
 func get_coords_center_start() -> Vector2i:
 	var signed_coords = self.get_processed_signed_coords()
-	var center_x = self.start.coords.x * self.room_size + (self.room_size / 2)  * signed_coords.x
-	var center_y = self.start.coords.y * self.room_size + (self.room_size / 2) * signed_coords.y
+	var center_x = self.start.coords.x * self.room_size.x + (self.room_size.x / 2)  * signed_coords.x
+	var center_y = self.start.coords.y * self.room_size.y + (self.room_size.y / 2) * signed_coords.y
 	return Vector2i(center_x, center_y)
 
 

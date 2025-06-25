@@ -1,5 +1,6 @@
 class_name ProcedureGeneratoreCriticalPath extends ProcedureGeneratorBase
 
+@export var camera : Camera2D
 @export var critical_path_length : int = 6
 @export var debug : bool = false
 
@@ -55,6 +56,8 @@ func render_dungeon() -> void:
 func set_position_room(room: Room) -> void:
 	var room_position_x = room.coords.x * self.room_size.x
 	var room_position_y = room.coords.y * self.room_size.y
+	if room.type_room == ROOM_TYPES.START:
+		self.camera.global_position = Vector2(room_position_x, room_position_y - 100)
 	room.global_position = Vector2(room_position_x, room_position_y)
 
 

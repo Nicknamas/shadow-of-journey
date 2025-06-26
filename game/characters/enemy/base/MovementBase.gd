@@ -1,4 +1,4 @@
-class_name UnitBase extends CharacterBody2D
+class_name MovementBase extends CharacterBody2D
 
 @export var speed: float = 100.0
 var direction: Vector2 = Vector2.ZERO

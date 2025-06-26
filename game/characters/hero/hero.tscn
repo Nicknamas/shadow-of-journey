@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=3 uid="uid://cl4yycurlmo4i"]
 
-[ext_resource type="Script" path="res://game/characters/hero/PlayerUnit.gd" id="1_aeiyj"]
+[ext_resource type="Script" uid="uid://48pqfxbloq7k" path="res://game/characters/hero/PlayerMovement.gd" id="1_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://dqf0agai62v7a" path="res://assets/graphics/sprites/hero/_side walk.png" id="2_2iuvy"]
 [ext_resource type="Texture2D" uid="uid://dlpth88kvvpnc" path="res://assets/graphics/sprites/hero/_side idle.png" id="2_b7sbx"]
 [ext_resource type="Texture2D" uid="uid://cj6p2nd750ha" path="res://assets/graphics/sprites/hero/_down idle.png" id="2_d4mqx"]
@@ -361,6 +361,7 @@ radius = 14.0
 [node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
+collision_mask = 2
 script = ExtResource("1_aeiyj")
 
 [node name="MoveAnimationController" parent="." node_paths=PackedStringArray("_animated_sprite") instance=ExtResource("2_w0uwg")]
@@ -371,8 +372,7 @@ _animated_sprite = NodePath("../AnimatedSprite2D")
 position = Vector2(0, -32)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_liakx")
-animation = &"walk_up"
-frame_progress = 0.89987
+animation = &"idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

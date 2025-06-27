@@ -27,15 +27,15 @@ func _physics_process(delta):
 
 
 func on_child_transition(state : State, new_state_name : String) -> void:
-	if current_state != state:
+	if self.current_state != state:
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())
 	if not new_state:
 		return
 	
-	if current_state:
-		current_state.exit()
+	if self.current_state:
+		self.current_state.exit()
 	
 	new_state.enter()
-	current_state = new_state
+	self.current_state = new_state

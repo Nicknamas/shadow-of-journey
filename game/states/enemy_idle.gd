@@ -1,7 +1,7 @@
 class_name EnemyIdle extends State
 
 @export var enemy : CharacterBody2D
-@export var move_speed : float = 10.0
+@export var move_speed : float = 80.0
 
 
 var move_direction : Vector2

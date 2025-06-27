@@ -21,3 +21,4 @@ anchor_mode = 0
 [node name="Room" parent="." instance=ExtResource("2_ix8kd")]
 
 [node name="orc1_melee" parent="." instance=ExtResource("4_nmqqg")]
+z_index = 0

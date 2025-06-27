@@ -10,3 +10,4 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="orc1_melee" parent="." instance=ExtResource("1_wo0q1")]
+aggro_radius = 100.0

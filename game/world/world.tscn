@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5vwni2a0jtg1" path="res://game/mechanics/generator_branched_path.gd" id="1_anm8e"]
 [ext_resource type="PackedScene" uid="uid://4cl8rg2kcsix" path="res://game/levels/Room.tscn" id="2_ix8kd"]
 [ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/Hero.tscn" id="3_puvak"]
-[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/enemy/orc_melee_1/OrcMelee1.tscn" id="4_nmqqg"]
+[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/enemy/orc_melee/orc_melee_1/OrcMelee1.tscn" id="4_nmqqg"]
 
 [node name="World" type="Node2D"]
 

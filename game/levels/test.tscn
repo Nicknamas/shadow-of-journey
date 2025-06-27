@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dps2r6jbjroob"]
 
-[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/enemy/orc_melee_1/OrcMelee1.tscn" id="1_wo0q1"]
+[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/enemy/orc_melee/orc_melee_1/OrcMelee1.tscn" id="1_wo0q1"]
 [ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/Hero.tscn" id="2_m400f"]
 
 [node name="test" type="Node2D"]
@@ -10,3 +10,4 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="orc1_melee" parent="." instance=ExtResource("1_wo0q1")]
+attack_radius = 20.0

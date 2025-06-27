@@ -5,10 +5,8 @@
 
 [node name="test" type="Node2D"]
 
-[node name="Hero" parent="." instance=ExtResource("1_ylobh")]
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="OrcMelee1" parent="." instance=ExtResource("2_ukred")]
-attack_radius = 20.0
-debug = false
+
+[node name="Hero" parent="." instance=ExtResource("1_ylobh")]

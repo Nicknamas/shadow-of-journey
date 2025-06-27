@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c382sckrgcrsp"]
+
+[ext_resource type="Script" uid="uid://d2dh07ek0m2q0" path="res://game/components/animation_move/animation_movement.gd" id="1_hyiem"]
+
+[node name="AnimationMovement" type="Node2D"]
+script = ExtResource("1_hyiem")

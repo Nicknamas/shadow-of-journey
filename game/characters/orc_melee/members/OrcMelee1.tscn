@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://jghx7260jvmu"]
 
 [ext_resource type="PackedScene" uid="uid://dmmpyl5gy4au5" path="res://game/characters/enemy/Enemy.tscn" id="1_7p6xm"]
-[ext_resource type="Script" uid="uid://cyfrx1hlmxj1" path="res://game/characters/orc_melee/orc_melee_movement.gd" id="2_dqksf"]
+[ext_resource type="Script" uid="uid://bdwmpj6g15efl" path="res://game/characters/orc_melee/members/orc_melee_1.gd" id="2_8twg2"]
 [ext_resource type="Texture2D" uid="uid://bcgt7bokyxeme" path="res://assets/sprites/orc_melee1/orc1_idle_full.png" id="3_iheu2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_peawy"]
@@ -142,14 +142,8 @@ animations = [{
 [node name="orc1_melee" instance=ExtResource("1_7p6xm")]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("2_dqksf")
-aggro_radius = 100.0
-attack_radius = 40.0
-speed = 80.0
+script = ExtResource("2_8twg2")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_t0a6c")
 animation = &"idle_side2"
-
-[node name="MoveAnimation" parent="." index="2" node_paths=PackedStringArray("_animated_sprite")]
-_animated_sprite = NodePath("../AnimatedSprite2D")

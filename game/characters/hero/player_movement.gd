@@ -1,4 +1,4 @@
-extends MovementBase
+class_name Hero extends MovementBase
 
 func _physics_process(delta):
 	self.direction = Vector2(

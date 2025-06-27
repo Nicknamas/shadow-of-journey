@@ -1,25 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://bo6ex834d3d0m"]
 
-[ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/hero.tscn" id="2_4adp2"]
-[ext_resource type="Script" uid="uid://b5vwni2a0jtg1" path="res://game/mechanics/generator_branched_path.gd" id="2_dess5"]
-[ext_resource type="PackedScene" uid="uid://4cl8rg2kcsix" path="res://game/levels/room.tscn" id="4_4adp2"]
-[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/enemy/ocr1_melee/orc_1_melee.tscn" id="4_dess5"]
+[ext_resource type="Script" uid="uid://b5vwni2a0jtg1" path="res://game/mechanics/generator_branched_path.gd" id="1_anm8e"]
+[ext_resource type="PackedScene" uid="uid://4cl8rg2kcsix" path="res://game/levels/Room.tscn" id="2_ix8kd"]
+[ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/Hero.tscn" id="3_puvak"]
+[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/enemy/orc_melee_1/OrcMelee1.tscn" id="4_nmqqg"]
 
 [node name="World" type="Node2D"]
 
 [node name="ProcedureGenerator" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
-script = ExtResource("2_dess5")
+script = ExtResource("1_anm8e")
 camera = NodePath("../Camera2D")
 debug = true
-room_scene = ExtResource("4_4adp2")
+room_scene = ExtResource("2_ix8kd")
 
-[node name="Hero" parent="." instance=ExtResource("2_4adp2")]
+[node name="Hero" parent="." instance=ExtResource("3_puvak")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Room" parent="." instance=ExtResource("4_4adp2")]
+[node name="Room" parent="." instance=ExtResource("2_ix8kd")]
 
-[node name="orc1_melee" parent="." instance=ExtResource("4_dess5")]
-aggro_radius = 100.0
-attack_radius = 40.0
+[node name="orc1_melee" parent="." instance=ExtResource("4_nmqqg")]

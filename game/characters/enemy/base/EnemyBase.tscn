@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dmmpyl5gy4au5"]
 
-[ext_resource type="Script" uid="uid://bb70gn1bcw0ln" path="res://game/characters/enemy/base/MovementBase.gd" id="1_ol7su"]
+[ext_resource type="Script" uid="uid://bb70gn1bcw0ln" path="res://game/characters/enemy/base/movement_base.gd" id="1_ol7su"]
 [ext_resource type="Script" uid="uid://cdrl3hen87ssh" path="res://game/utils/movement/move_animation.gd" id="3_7ov07"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a0akn"]

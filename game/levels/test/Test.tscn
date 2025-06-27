@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dps2r6jbjroob"]
 
-[ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/Hero.tscn" id="1_ylobh"]
+[ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/hero.tscn" id="1_ylobh"]
 [ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/orc_melee/members/OrcMelee1.tscn" id="2_ukred"]
 
 [node name="test" type="Node2D"]

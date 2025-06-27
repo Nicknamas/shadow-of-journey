@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmmpyl5gy4au5"]
+
+[ext_resource type="Script" uid="uid://bb70gn1bcw0ln" path="res://game/characters/enemy/enemy_movement.gd" id="1_ol7su"]
+[ext_resource type="Script" uid="uid://cdrl3hen87ssh" path="res://game/mechanics/movement/move_animation.gd" id="3_7ov07"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0akn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_no76c"]
+radius = 86.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ol7su"]
+radius = 18.0278
+
+[node name="EnemyBase" type="CharacterBody2D"]
+script = ExtResource("1_ol7su")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a0akn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="MoveAnimation" type="Node2D" parent="."]
+script = ExtResource("3_7ov07")
+metadata/_custom_type_script = "uid://cdrl3hen87ssh"
+
+[node name="AggroArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea"]
+shape = SubResource("CircleShape2D_no76c")
+
+[node name="RangeAttack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeAttack"]
+shape = SubResource("CircleShape2D_ol7su")

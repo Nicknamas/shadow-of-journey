@@ -26,4 +26,3 @@ func update(delta: float):
 func physics_update(delta: float):
 	if self.enemy:
 		self.enemy.velocity = self.move_direction * self.move_speed
-		print(self.enemy.velocity)

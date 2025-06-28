@@ -11,7 +11,11 @@ func _ready():
 		print("BRANCHED_PATH:")
 		super.print_dungeons()
 	self.init_room.hide()
-	super.render_dungeon()
+	self.render_current_room()
+
+
+func render_current_room() -> void:
+	pass
 
 
 func generate_path(from_room : Room, length : int, marker : String) -> bool:

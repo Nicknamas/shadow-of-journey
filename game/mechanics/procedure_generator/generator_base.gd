@@ -13,7 +13,7 @@ const ROOM_TYPES = {
 
 var dungeon : Array
 var init_room : Room
-
+var current_room : Room
 
 func generate_dungeon() -> void:
 	await self.init_init_room()
@@ -42,7 +42,8 @@ func place_start() -> void:
 		self.start.coords.x = randi_range(0, self.dimensions.x - 1)
 	if not includes_y_in_dungeon(self.start.coords.y, Vector2i.ZERO.y):
 		self.start.coords.y = randi_range(0, self.dimensions.y - 1)
-	dungeon[self.start.coords.x][self.start.coords.y] = self.start
+	self.dungeon[self.start.coords.x][self.start.coords.y] = self.start
+	self.current_room = self.start
 
 
 func includes_x_in_dungeon(x : int, direction_x : int) -> bool:
@@ -53,14 +54,14 @@ func includes_y_in_dungeon(y : int, direction_y : int) -> bool:
 	return y + direction_y >= 0 and y + direction_y < dimensions.y
 
 
-func get_hero() -> Node2D:
-	return get_tree().get_first_node_in_group("Hero") as Node2D
-
-
 func set_position_hero_to_start() -> void:
 	var hero = self.get_hero()
 	var coords_center_start = self.get_coords_center_start()
 	hero.global_position = Vector2(coords_center_start.x, coords_center_start.y)
+
+
+func get_hero() -> Node2D:
+	return get_tree().get_first_node_in_group("Hero") as Node2D
 
 
 func get_coords_center_start() -> Vector2i:

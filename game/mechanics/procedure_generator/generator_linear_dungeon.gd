@@ -83,7 +83,6 @@ func is_critical_path_connect_itself(current_room : Room, variant_direction : Ve
 			continue
 		if not dungeon[coords.x][coords.y]:
 			continue
-		print(dungeon[coords.x ][coords.y].type_room)
 		if str(dungeon[coords.x ][coords.y].type_room) in [
 				ROOM_TYPES.CRITICAL, 
 				ROOM_TYPES.START

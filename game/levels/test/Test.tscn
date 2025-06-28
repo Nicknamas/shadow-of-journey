@@ -1,13 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dps2r6jbjroob"]
+[gd_scene load_steps=2 format=3 uid="uid://dps2r6jbjroob"]
 
-[ext_resource type="PackedScene" uid="uid://cl4yycurlmo4i" path="res://game/characters/hero/Hero.tscn" id="1_ylobh"]
-[ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/orc_melee/members/OrcMelee1.tscn" id="2_ukred"]
+[ext_resource type="PackedScene" uid="uid://dmblcqev2tpcs" path="res://game/levels/start/Start.tscn" id="1_cx2a7"]
 
 [node name="test" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="OrcMelee1" parent="." instance=ExtResource("2_ukred")]
-z_index = 0
-
-[node name="Hero" parent="." instance=ExtResource("1_ylobh")]
+[node name="Start" parent="." instance=ExtResource("1_cx2a7")]

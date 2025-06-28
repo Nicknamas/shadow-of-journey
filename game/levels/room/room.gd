@@ -17,7 +17,15 @@ func _init():
 func _ready():
 	var tile_map_layer = get_node("Ground") as TileMapLayer
 	self.size = tile_map_layer.get_used_rect().size
+	if NavigationManager.spawn_door_tag != null:
+		on_level_spawn(NavigationManager.spawn_door_tag)
 
+
+func on_level_spawn(destination_tag : String):
+	var door_path = "Doors/Door_" + destination_tag
+	var door = get_node(door_path) as Door
+	NavigationManager.trigger_player_spawn(door.spawn.global_position, door.spawn_direction)
+	
 
 func set_values(
 	_type_room : String = "ada",

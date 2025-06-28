@@ -44,7 +44,6 @@ func initializy_dungeons() -> void:
 
 func render_dungeon() -> void:
 	for row in dungeon:
-		print(row)
 		for room in row:
 			if room and room is Room:
 				self.get_parent().add_child.call_deferred(room)

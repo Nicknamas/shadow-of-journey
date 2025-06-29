@@ -1,63 +1,22 @@
-class_name ProcedureGeneratoreCriticalPath extends ProcedureGeneratorBase
+class_name ProcedureGeneratoreLinearDungeon extends ProcedureGeneratorBase
 
-@export var camera : Camera2D
 @export var critical_path_length : int = 6
-@export var debug : bool = false
+@export var debug : bool = true
 
 var count_rooms : int
-var tilemap_size : Vector2i
-var room_size : Vector2i
-const texture_size_in_pixels : int = 16
 var branch_canditates : Array[Room]
 
+
 func _ready() -> void:
-	await self.generate_dungeon()
+	self.generate_dungeon()
 	if debug:
 		print("CRITICAL_PATH:")
 		super.print_dungeons()
-	self.set_position_hero_to_start()
 
 
 func generate_dungeon() -> void:
-	await super.generate_dungeon()
-	self.set_sizes_tiles()
+	super.generate_dungeon()
 	self.generate_paths(start, critical_path_length, ROOM_TYPES.CRITICAL)
-
-
-func set_sizes_tiles() -> void:
-	self.tilemap_size = self.init_room.size
-	self.room_size = self.tilemap_size * self.texture_size_in_pixels
-
-
-func clear_values() -> void:
-	self.dungeon.clear()
-	self.branch_canditates.clear()
-	self.start = super.create_room(ROOM_TYPES.START)
-
-
-func initializy_dungeons() -> void:
-	for x in dimensions.x:
-		dungeon.append([])
-		for y in dimensions.y:
-			dungeon[x].append(0)
-
-
-func render_dungeon() -> void:
-	for row in dungeon:
-		for room in row:
-			if room and room is Room:
-				self.get_parent().add_child.call_deferred(room)
-				self.set_position_room(room)
-	if debug:
-		print("count rooms: ", count_rooms)
-
-
-func set_position_room(room: Room) -> void:
-	var room_position_x = room.coords.x * self.room_size.x
-	var room_position_y = room.coords.y * self.room_size.y
-	if room.type_room == ROOM_TYPES.START:
-		self.camera.global_position = Vector2(room_position_x, room_position_y - 100)
-	room.global_position = Vector2(room_position_x, room_position_y)
 
 
 func generate_critical_path() -> void:

@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-NavigationManager="*res://game/levels/elements/navigation_manager.gd"
-TransitionScreen="*res://game/levels/elements/TransitionScreen.tscn"
+NavigationManager="*res://game/global/navigation_manager.gd"
+TransitionScreen="*res://game/global/TransitionScreen.tscn"
 
 [display]
 

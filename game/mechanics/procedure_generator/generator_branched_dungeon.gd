@@ -1,21 +1,15 @@
-class_name ProcedureGeneratorBranches extends ProcedureGeneratoreCriticalPath
+class_name ProcedureGeneratorBranchesDungeon extends ProcedureGeneratoreLinearDungeon
 
 @export var branches : int = 3
 @export var branches_length : Vector2i = Vector2i(1, 3)
 
 
-func _ready():
+func _init():
 	await super._ready()
 	self.generate_branches()
 	if debug:
 		print("BRANCHED_PATH:")
 		super.print_dungeons()
-	self.init_room.hide()
-	self.render_current_room()
-
-
-func render_current_room() -> void:
-	pass
 
 
 func generate_path(from_room : Room, length : int, marker : String) -> bool:

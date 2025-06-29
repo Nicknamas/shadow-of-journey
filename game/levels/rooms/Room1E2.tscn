@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwma128yb7sa2"]
+
+[ext_resource type="PackedScene" uid="uid://dtw1m2r46kidp" path="res://game/levels/base/RoomBase.tscn" id="1_7cm7w"]
+[ext_resource type="PackedScene" uid="uid://b022wqswmmoka" path="res://game/components/door/door.tscn" id="2_jvbac"]
+
+[node name="RoomBase" instance=ExtResource("1_7cm7w")]
+
+[node name="Doors" type="Node" parent="." index="6"]
+
+[node name="Door_E" parent="Doors" index="0" instance=ExtResource("2_jvbac")]
+position = Vector2(615, 142)
+destination_level_tag = "room"
+destination_door_tag = "W"
+spawn_direction = "right"
+
+[node name="Spawn" parent="Doors/Door_E" index="1"]
+position = Vector2(-45, -2)
+
+[editable path="Doors/Door_E"]

@@ -1,6 +1,6 @@
 extends Node
 
-const scene_room = preload("res://game/levels/room/Room.tscn")
+const scene_room = preload("res://game/levels/rooms/Room4E.tscn")
 const scene_start = preload("res://game/levels/start/Start.tscn")
 
 signal on_trigger_player_spawn

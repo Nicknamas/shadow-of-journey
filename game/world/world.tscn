@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://bo6ex834d3d0m"]
+[gd_scene load_steps=8 format=4 uid="uid://c783q2s8tjllk"]
 
 [ext_resource type="Script" uid="uid://ryn5p4kb66xb" path="res://game/global/game_manager.gd" id="1_fr3h4"]
 [ext_resource type="Texture2D" uid="uid://cgcwl28teuo1t" path="res://assets/sprites/world/Floors_Tiles.png" id="2_6liei"]
-[ext_resource type="PackedScene" uid="uid://dmr8j2mvogmh0" path="res://game/levels/start/Start.tscn" id="2_fr3h4"]
+[ext_resource type="PackedScene" uid="uid://dmr8j2mvogmh0" path="res://game/levels/dungeon/start_dungeon/StartDungeon.tscn" id="2_fr3h4"]
+[ext_resource type="Texture2D" uid="uid://dx54uy7sv82j" path="res://assets/sprites/elements/light-mask.png" id="4_anm8e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_anm8e"]
 texture = ExtResource("2_6liei")
@@ -14,8 +15,7 @@ texture = ExtResource("2_6liei")
 sources/1 = SubResource("TileSetAtlasSource_anm8e")
 
 [sub_resource type="Environment" id="Environment_6liei"]
-tonemap_mode = 2
-glow_enabled = true
+tonemap_mode = 1
 glow_levels/1 = 1.0
 glow_levels/2 = 1.0
 glow_levels/3 = 0.0
@@ -41,3 +41,10 @@ tile_set = SubResource("TileSet_ix8kd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6liei")
+
+[node name="PointLight2D" type="PointLight2D" parent="WorldEnvironment"]
+position = Vector2(137, -95)
+color = Color(1, 1, 1, 0.227451)
+energy = 1.2
+texture = ExtResource("4_anm8e")
+texture_scale = 5.21

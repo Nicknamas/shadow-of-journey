@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cl4yycurlmo4i"]
+[gd_scene load_steps=38 format=3 uid="uid://diigwahobikap"]
 
 [ext_resource type="Script" uid="uid://48pqfxbloq7k" path="res://game/characters/hero/player_movement.gd" id="1_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://dqf0agai62v7a" path="res://assets/sprites/hero/_side walk.png" id="2_2iuvy"]
@@ -98,6 +98,7 @@ states/Start/position = Vector2(194, 110)
 transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_g1bra"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_m0g0o"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_b1ttj")]
 
 [sub_resource type="Animation" id="Animation_au64s"]
+resource_name = "walk_down"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false

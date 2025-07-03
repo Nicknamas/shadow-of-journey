@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnlbmd5yo020u"]
+[gd_scene load_steps=2 format=3 uid="uid://dlsnfewu3k3xb"]
 
 [ext_resource type="PackedScene" uid="uid://dtw1m2r46kidp" path="res://game/levels/dungeon/base/RoomBase.tscn" id="1_w2if2"]
 
-[node name="Room" instance=ExtResource("1_w2if2")]
+[node name="RoomBase" instance=ExtResource("1_w2if2")]
+
+[editable path="Doors/Door_N"]
+[editable path="Doors/Door_E"]
+[editable path="Doors/Door_S"]
+[editable path="Doors/Door_W"]

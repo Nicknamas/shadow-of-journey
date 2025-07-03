@@ -21,8 +21,11 @@ func _ready():
 func init_exits_of_current_room() -> void:
 	var level = get_node(PATH_TO_LEVEL)
 	var room = level.get_child(0)
-	var doors = room.get_node(NAME_NODE_DOORS) as Node
+	var doors = room.get_node(NAME_NODE_DOORS) as Doors
 	var room_constructor = room.get_node(NAME_NODE_CONSTRUCTOR) as RoomConstuctor
+	
+	if room_constructor.is_cached:
+		return
 	
 	for exit in self.exits_name:
 		var current_exit = self.current_room.exits_test[exit]
@@ -31,12 +34,9 @@ func init_exits_of_current_room() -> void:
 
 		var new_coords = current_exit + self.current_room.coords
 		var cell = self.dungeon[new_coords.x][new_coords.y]
-		var door = get_door_with_position(exit, doors) as Node
+		var door = get_door_with_position(exit, doors) as Door
 		if cell is Room:
 			door.destination_level_tag = get_level_tag(cell)
-		else:
-			door.queue_free()
-			doors.remove_child(door)
 	room_constructor.define_room(self.current_room.exits_test)
 
 

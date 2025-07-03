@@ -4,6 +4,20 @@
 
 [node name="RoomBase" instance=ExtResource("1_w2if2")]
 
+[node name="Door_N" parent="Doors" index="0"]
+destination_level_tag = "room"
+spawn_direction = "up"
+position_door = "UP"
+
+[node name="Door_E" parent="Doors" index="1"]
+destination_level_tag = "room"
+
+[node name="Door_S" parent="Doors" index="2"]
+destination_level_tag = "room"
+
+[node name="Door_W" parent="Doors" index="3"]
+destination_level_tag = "room"
+
 [editable path="Doors/Door_N"]
 [editable path="Doors/Door_E"]
 [editable path="Doors/Door_S"]

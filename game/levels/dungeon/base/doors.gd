@@ -10,6 +10,8 @@ func define(exits: Dictionary) -> void:
 			continue
 		else:
 			var door = get_door_with_position(exit)
+			if not door:
+				continue
 			remove_child(door)
 			door.queue_free()
 
@@ -18,3 +20,4 @@ func get_door_with_position(position : String):
 	for door in get_children():
 		if door.position_door == position:
 			return door
+	return null

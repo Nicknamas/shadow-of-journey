@@ -1,7 +1,7 @@
 class_name RoomConstuctor extends Node
 
 @export var elements : Array[Node]
-
+var is_cached : bool = false
 
 class RoomTileMapElement extends RoomElement:
 	pass

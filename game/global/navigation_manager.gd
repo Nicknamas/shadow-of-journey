@@ -1,5 +1,6 @@
 extends Node
 
+const scene_start = preload("res://game/world/World.tscn")
 const scene_room4E = preload("res://game/levels/dungeon/rooms/Room4E.tscn")
 const scene_room3E1 = preload("res://game/levels/dungeon/rooms/Room3E1.tscn")
 const scene_room3E2 = preload("res://game/levels/dungeon/rooms/Room3E2.tscn")
@@ -56,8 +57,13 @@ func go_to_level(level_tag : String, destination_tag) -> void:
 		scene_to_load = self.scene_room1E3
 	elif "room1E4" in level_tag:
 		scene_to_load = self.scene_room1E4
-
-	if scene_to_load != null:
+	
+	if "start" in level_tag:
+		TransitionScreen.transition()
+		await TransitionScreen.on_transition_finished
+		self.spawn_door_tag = destination_tag
+		get_tree().change_scene_to_packed(scene_start)
+	elif scene_to_load != null:
 		TransitionScreen.transition()
 		await TransitionScreen.on_transition_finished
 		self.spawn_door_tag = destination_tag

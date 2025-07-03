@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dautc858k8uku"
-path="res://.godot/imported/Ground_rocks.png-82e744ee08a4117ce4728948c01f3bbc.ctex"
+uid="uid://ccq5k1cm480ad"
+path="res://.godot/imported/Wall_Tiles.png-248c1bb50de9abbf1af925e531d93fc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world/Ground_rocks.png"
-dest_files=["res://.godot/imported/Ground_rocks.png-82e744ee08a4117ce4728948c01f3bbc.ctex"]
+source_file="res://assets/sprites/world/Wall_Tiles.png"
+dest_files=["res://.godot/imported/Wall_Tiles.png-248c1bb50de9abbf1af925e531d93fc8.ctex"]
 
 [params]
 

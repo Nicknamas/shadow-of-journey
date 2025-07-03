@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw6espm16cb1a"
-path="res://.godot/imported/Tree_wall_sidel.png-1f106658e8c1f56029c1cfb6d6f38d38.ctex"
+uid="uid://beqi8fl0hbfs4"
+path="res://.godot/imported/Vegetation.png-5f271cb2cd1f697ce2921139fc795b5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world/Tree_wall_sidel.png"
-dest_files=["res://.godot/imported/Tree_wall_sidel.png-1f106658e8c1f56029c1cfb6d6f38d38.ctex"]
+source_file="res://assets/sprites/world/Vegetation.png"
+dest_files=["res://.godot/imported/Vegetation.png-5f271cb2cd1f697ce2921139fc795b5d.ctex"]
 
 [params]
 

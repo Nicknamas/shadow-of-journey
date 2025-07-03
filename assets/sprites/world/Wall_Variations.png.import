@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvb436v2hg86u"
-path="res://.godot/imported/water_coasts.png-e33f303f820ad1dc08e045ccd32b29d1.ctex"
+uid="uid://dhkdkp12vkvwt"
+path="res://.godot/imported/Wall_Variations.png-54a9ac19bea6833f0f63059c581c940b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world/water_coasts.png"
-dest_files=["res://.godot/imported/water_coasts.png-e33f303f820ad1dc08e045ccd32b29d1.ctex"]
+source_file="res://assets/sprites/world/Wall_Variations.png"
+dest_files=["res://.godot/imported/Wall_Variations.png-54a9ac19bea6833f0f63059c581c940b.ctex"]
 
 [params]
 

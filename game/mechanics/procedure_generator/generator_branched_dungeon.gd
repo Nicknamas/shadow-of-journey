@@ -1,17 +1,15 @@
-class_name ProcedureGeneratorBranches extends ProcedureGeneratoreCriticalPath
+class_name ProcedureGeneratorBranchesDungeon extends ProcedureGeneratoreLinearDungeon
 
 @export var branches : int = 3
 @export var branches_length : Vector2i = Vector2i(1, 3)
 
 
-func _ready():
+func _init():
 	await super._ready()
 	self.generate_branches()
 	if debug:
 		print("BRANCHED_PATH:")
 		super.print_dungeons()
-	self.init_room.hide()
-	super.render_dungeon()
 
 
 func generate_path(from_room : Room, length : int, marker : String) -> bool:
@@ -19,7 +17,6 @@ func generate_path(from_room : Room, length : int, marker : String) -> bool:
 		return true
 	var current_room : Room = from_room
 	var direction : Vector2i = generate_random_direction()
-	self.count_rooms += 1
 	
 	for i in 4:
 		if (self.is_valid_path(current_room, direction)):
@@ -31,12 +28,11 @@ func generate_path(from_room : Room, length : int, marker : String) -> bool:
 			else:
 				dungeon[new_room.coords.x][new_room.coords.y] = 0
 		direction = Vector2(direction.y, -direction.x)
-	self.count_rooms -= 1
 	return false
 
 
 func is_valid_path(current_room: Room, direction: Vector2i) -> bool:
-	if not super.is_includes_coords_in_dungeon(current_room.coords, direction):
+	if not super.includes_dungeon_coords(current_room.coords, direction):
 		return false
 	var is_not_empty_room = dungeon[current_room.coords.x + direction.x][current_room.coords.y + direction.y]
 	return not is_not_empty_room

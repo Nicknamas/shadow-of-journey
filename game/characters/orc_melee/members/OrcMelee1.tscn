@@ -463,15 +463,13 @@ hframes = 8
 vframes = 4
 frame = 16
 
-[node name="EnemyIdle" parent="StateMachine" index="0" node_paths=PackedStringArray("aggro_area")]
+[node name="EnemyIdle" parent="StateMachine" index="0"]
 move_speed = 30.0
-aggro_area = NodePath("../../AggroArea")
 
-[node name="EnemyChase" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy", "aggro_area")]
+[node name="EnemyChase" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_j8vkv")
 enemy = NodePath("../..")
 move_speed = 80.0
-aggro_area = NodePath("../../AggroArea")
 metadata/_custom_type_script = "uid://dcrpgfcfwasmf"
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="5"]

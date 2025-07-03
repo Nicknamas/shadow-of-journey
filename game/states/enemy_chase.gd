@@ -2,22 +2,53 @@ class_name EnemyChase
 extends State
 
 @export var enemy: CharacterBody2D
-@export var move_speed: float = 120.0
-@export var aggro_area: Area2D
+@export var move_speed: float = 100.0
+@export var aggro_radius: float = 100.0
+@export var name_group_target: String = "Hero"
 
-var target: Node2D = null
+var aggro_target: Node2D = null
 
 func enter():
-	for body in aggro_area.get_overlapping_bodies():
-		if body.name == "Hero":
-			target = body
-			break
+	if enemy.has_meta("aggro_target"):
+		aggro_target = enemy.get_meta("aggro_target")
 
-func update(delta: float):
-	if not target or not aggro_area.get_overlapping_bodies().has(target):
-		emit_signal("transitioned", self, "EnemyIdle")
+func update(_delta: float):
+	if not aggro_target or not is_instance_valid(aggro_target):
+		var new_target = find_closest_enemy_within_radius()
+		if new_target:
+			aggro_target = new_target
+		else:
+			emit_signal("transitioned", self, "EnemyIdle")
+			return
 
-func physics_update(delta: float):
-	if enemy and target:
-		var direction = (target.global_position - enemy.global_position).normalized()
-		enemy.velocity = direction * move_speed
+	var dist_to_current = enemy.global_position.distance_to(aggro_target.global_position)
+	var closer = find_closer_enemy_than(dist_to_current)
+	if closer:
+		aggro_target = closer
+
+func physics_update(_delta: float):
+	if aggro_target:
+		var dir = (aggro_target.global_position - enemy.global_position).normalized()
+		enemy.velocity = dir * move_speed
+
+func find_closest_enemy_within_radius() -> Node2D:
+	var closest = null
+	var min_dist = aggro_radius
+	for node in get_tree().get_nodes_in_group(name_group_target):
+		if not node.has_method("global_position"):
+			continue
+		var dist = enemy.global_position.distance_to(node.global_position)
+		if dist <= min_dist and (closest == null or dist < enemy.global_position.distance_to(closest.global_position)):
+			closest = node
+	return closest
+
+func find_closer_enemy_than(distance: float) -> Node2D:
+	var closer = null
+	for node in get_tree().get_nodes_in_group(name_group_target):
+		if not node.has_method("global_position"):
+			continue
+		var dist = enemy.global_position.distance_to(node.global_position)
+		if dist <= aggro_radius and dist < distance:
+			distance = dist
+			closer = node
+	return closer

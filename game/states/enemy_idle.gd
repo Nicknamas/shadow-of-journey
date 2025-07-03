@@ -3,7 +3,8 @@ extends State
 
 @export var enemy : CharacterBody2D
 @export var move_speed : float = 80.0
-@export var aggro_area : Area2D
+@export var aggro_radius : float = 100.0
+@export var name_group_target: String = "Hero"
 
 var move_direction : Vector2
 var wander_time : float
@@ -16,10 +17,10 @@ func enter():
 	randomize_wander()
 
 func update(delta: float):
-	for body in aggro_area.get_overlapping_bodies():
-		if body.name == "Hero":
-			emit_signal("transitioned", self, "EnemyChase")
-			return
+	var target = find_closest_enemy_in_aggro_range()
+	if target:
+		emit_signal("transitioned", self, "EnemyChase")
+		return
 
 	if wander_time > 0:
 		wander_time -= delta
@@ -29,3 +30,15 @@ func update(delta: float):
 func physics_update(delta: float):
 	if enemy:
 		enemy.velocity = move_direction * move_speed
+
+func find_closest_enemy_in_aggro_range() -> Node2D:
+	var closest = null
+	
+	for node in get_tree().get_nodes_in_group(name_group_target):
+		print(typeof(node))
+		if not node.has_method("global_position"):
+			continue
+		var dist = enemy.global_position.distance_to(node.global_position)
+		if dist <= aggro_radius and (closest == null or dist < enemy.global_position.distance_to(closest.global_position)):
+			closest = node
+	return closest

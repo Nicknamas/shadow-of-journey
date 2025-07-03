@@ -1046,7 +1046,7 @@ texture = ExtResource("3_asr5f")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7dp6i")
 
-[node name="Room" instance=ExtResource("1_nqy35")]
+[node name="Room4E" instance=ExtResource("1_nqy35")]
 script = ExtResource("1_aj767")
 
 [node name="Props2" type="TileMapLayer" parent="." index="2"]
@@ -1056,7 +1056,7 @@ tile_set = SubResource("TileSet_qlcsq")
 [node name="Doors" type="Node" parent="." index="7"]
 
 [node name="Door_N" parent="Doors" index="0" instance=ExtResource("7_21lvq")]
-position = Vector2(320, 12)
+position = Vector2(325, -24)
 destination_level_tag = "room"
 destination_door_tag = "S"
 
@@ -1064,10 +1064,11 @@ destination_door_tag = "S"
 position = Vector2(0, 33)
 
 [node name="Door_E" parent="Doors" index="1" instance=ExtResource("7_21lvq")]
-position = Vector2(615, 142)
+position = Vector2(615, 172)
 destination_level_tag = "room"
 destination_door_tag = "W"
 spawn_direction = "right"
+position_door = "RIGHT"
 
 [node name="Spawn" parent="Doors/Door_E" index="1"]
 position = Vector2(-45, -2)
@@ -1077,15 +1078,17 @@ position = Vector2(325, 367)
 destination_level_tag = "room"
 destination_door_tag = "N"
 spawn_direction = "down"
+position_door = "DOWN"
 
 [node name="Spawn" parent="Doors/Door_S" index="1"]
 position = Vector2(0, -47)
 
 [node name="Door_W" parent="Doors" index="3" instance=ExtResource("7_21lvq")]
-position = Vector2(26, 185)
+position = Vector2(26, 172)
 destination_level_tag = "room"
 destination_door_tag = "E"
 spawn_direction = "left"
+position_door = "LEFT"
 
 [node name="Spawn" parent="Doors/Door_W" index="1"]
 position = Vector2(50, 0)

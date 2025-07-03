@@ -3,7 +3,7 @@ class_name ProcedureGeneratoreLinearDungeon extends ProcedureGeneratorBase
 @export var critical_path_length : int = 6
 @export var debug : bool = true
 
-var count_rooms : int
+const exits_names = ["UP", "RIGHT", "DOWN", "LEFT"]
 var branch_canditates : Array[Room]
 
 
@@ -19,11 +19,7 @@ func generate_dungeon() -> void:
 	self.generate_paths(start, critical_path_length, ROOM_TYPES.CRITICAL)
 
 
-func generate_critical_path() -> void:
-	generate_paths(start, critical_path_length, ROOM_TYPES.CRITICAL)
-
-
-func is_includes_coords_in_dungeon(coords: Vector2i, direction: Vector2i) -> bool:
+func includes_dungeon_coords(coords: Vector2i, direction: Vector2i) -> bool:
 	return (
 		super.includes_x_in_dungeon(coords.x, direction.x) and 
 		super.includes_y_in_dungeon(coords.y, direction.y)
@@ -38,7 +34,7 @@ func is_critical_path_connect_itself(current_room : Room, variant_direction : Ve
 
 	for direction in directions:
 		var coords : Vector2i = new_position + direction
-		if not self.is_includes_coords_in_dungeon(coords, direction):
+		if not self.includes_dungeon_coords(coords, direction):
 			continue
 		if not dungeon[coords.x][coords.y]:
 			continue
@@ -54,11 +50,12 @@ func generate_paths(from_room : Room, length : int, marker : String) -> bool:
 	if length == 0:
 		return true
 	var current_room : Room = from_room
-	var direction : Vector2i = self.generate_random_direction()
-	count_rooms += 1
-	for i in 4:
-		if self.is_valid_critical_path(current_room, direction):
-			var new_room = self.get_new_roow_with_marker_and_coords(marker, current_room.coords, direction)
+	for exit in self.exits_names:
+		var current_exit = current_room.exits_test[exit]
+		if current_exit == Vector2i(-1, -1) or current_exit == null:
+			continue
+		if self.is_valid_critical_path(current_room, current_exit):
+			var new_room = self.get_new_roow_with_marker_and_coords(marker, current_room.coords, current_exit)
 			if length > 1:
 				self.branch_canditates.append(new_room)
 			if self.generate_paths(new_room, length - 1, marker):
@@ -66,18 +63,36 @@ func generate_paths(from_room : Room, length : int, marker : String) -> bool:
 			else:
 				self.branch_canditates.erase(new_room)
 				dungeon[new_room.coords.x][new_room.coords.y] = 0
-		direction = Vector2(direction.y, -direction.x)
-	count_rooms -= 1
 	return false
 
 
 func is_valid_critical_path(current_room: Room, direction: Vector2i) -> bool:
-	if not self.is_includes_coords_in_dungeon(current_room.coords, direction):
-		return false
-
-	var not_itself_connection_room = not self.is_critical_path_connect_itself(current_room, direction)
 	var is_empty_room = dungeon[current_room.coords.x + direction.x][current_room.coords.y + direction.y]
-	return not_itself_connection_room and not is_empty_room
+	return not is_empty_room
+
+
+func close_exits_in_empty_room() -> void:
+	for x in self.dimensions.x:
+		for y in self.dimensions.y:
+			var room = dungeon[x][y]
+			if not (room is Room):
+				continue 
+			var count_neighboring_rooms = get_count_neighboring_rooms(room)
+			room.count_exits = count_neighboring_rooms
+
+
+func get_count_neighboring_rooms(room : Room) -> int:
+	var count_neighboring_rooms = 0
+	for exit in self.exits_names:
+		var current_exit = room.exits_test[exit]
+		if current_exit == null:
+			continue
+		var new_coords = room.coords + current_exit
+		if dungeon[new_coords.x][new_coords.y] is Room:
+			count_neighboring_rooms += 1
+		else:
+			room.exits_test[exit] = null
+	return count_neighboring_rooms
 
 
 func get_new_roow_with_marker_and_coords(
@@ -86,9 +101,11 @@ func get_new_roow_with_marker_and_coords(
 		direction : Vector2i
 	) -> Room:
 	var new_coords = current_coords + direction
-	var new_room = super.create_room(marker, -direction)
+	var new_room = super.create_room(marker)
 	new_room.coords = new_coords
 	dungeon[new_room.coords.x][new_room.coords.y] = new_room
+	new_room.define_init_exit(-direction)
+	new_room.define_exits_for_room()
 	return new_room
 
 

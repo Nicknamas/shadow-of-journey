@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cgcwl28teuo1t" path="res://assets/sprites/world/Floors_Tiles.png" id="1_sos7a"]
 [ext_resource type="Texture2D" uid="uid://c066w1odmxjhj" path="res://assets/sprites/world/props1.png" id="2_sos7a"]
-[ext_resource type="PackedScene" uid="uid://diigwahobikap" path="res://game/characters/hero/Hero.tscn" id="3_3b7ko"]
+[ext_resource type="PackedScene" uid="uid://u8f600u4jr88" path="res://game/characters/hero/Hero.tscn" id="3_3b7ko"]
 [ext_resource type="Script" uid="uid://bxy2rxfiqsvu5" path="res://game/levels/dungeon/base/bushes.gd" id="5_hp4r1"]
 [ext_resource type="Script" uid="uid://btlviv7ewq0b8" path="res://game/levels/dungeon/base/rocks.gd" id="8_4gms4"]
 [ext_resource type="PackedScene" uid="uid://jghx7260jvmu" path="res://game/characters/orc_melee/members/OrcMelee1.tscn" id="8_n7uma"]
@@ -391,7 +391,8 @@ texture = ExtResource("10_quieo")
 4:24/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_n51jl"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_qumm6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7q41"]
@@ -469,4 +470,4 @@ tile_set = SubResource("TileSet_y0bqx")
 
 [node name="OrcMelee1" parent="." instance=ExtResource("8_n7uma")]
 position = Vector2(538, 256)
-collision_mask = 1
+collision_mask = 2

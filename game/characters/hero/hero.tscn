@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://diigwahobikap"]
+[gd_scene load_steps=38 format=3 uid="uid://u8f600u4jr88"]
 
 [ext_resource type="Script" uid="uid://48pqfxbloq7k" path="res://game/characters/hero/player_movement.gd" id="1_aeiyj"]
 [ext_resource type="Texture2D" uid="uid://dqf0agai62v7a" path="res://assets/sprites/hero/_side walk.png" id="2_2iuvy"]

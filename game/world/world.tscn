@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c783q2s8tjllk"]
+[gd_scene load_steps=8 format=4 uid="uid://crs733mwhtith"]
 
 [ext_resource type="Script" uid="uid://ryn5p4kb66xb" path="res://game/global/game_manager.gd" id="1_fr3h4"]
 [ext_resource type="Texture2D" uid="uid://cgcwl28teuo1t" path="res://assets/sprites/world/Floors_Tiles.png" id="2_6liei"]

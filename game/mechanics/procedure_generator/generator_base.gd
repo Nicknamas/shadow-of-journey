@@ -34,6 +34,7 @@ func place_start() -> void:
 	if not includes_y_in_dungeon(self.start.coords.y, Vector2i.ZERO.y):
 		self.start.coords.y = randi_range(0, self.dimensions.y - 1)
 	self.dungeon[self.start.coords.x][self.start.coords.y] = self.start
+	self.start.define_exits_for_room()
 
 
 func includes_x_in_dungeon(x : int, direction_x : int) -> bool:
@@ -44,8 +45,8 @@ func includes_y_in_dungeon(y : int, direction_y : int) -> bool:
 	return y + direction_y >= 0 and y + direction_y < dimensions.y
 
 
-func create_room(type_room : String, init_exit : Vector2i = Vector2i(-1, -1)) -> Room:
-	return Room.new(type_room, init_exit)
+func create_room(type_room : String) -> Room:
+	return Room.new(dimensions.x, dimensions.y, type_room)
 
 
 func print_dungeons() -> void:

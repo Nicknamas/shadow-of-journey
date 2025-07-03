@@ -5,6 +5,9 @@
 
 [node name="StartDungeon" instance=ExtResource("1_rxlgb")]
 
+[node name="Bushes" parent="." index="3"]
+visible = false
+
 [node name="Doors" type="Node" parent="." index="6"]
 
 [node name="Door_N" parent="Doors" index="0" instance=ExtResource("2_66tbn")]
@@ -20,6 +23,7 @@ position = Vector2(615, 142)
 destination_level_tag = "room"
 destination_door_tag = "W"
 spawn_direction = "right"
+position_door = "RIGHT"
 
 [node name="Spawn" parent="Doors/Door_E" index="1"]
 position = Vector2(-45, -2)
@@ -29,6 +33,7 @@ position = Vector2(325, 367)
 destination_level_tag = "room"
 destination_door_tag = "N"
 spawn_direction = "down"
+position_door = "DOWN"
 
 [node name="Spawn" parent="Doors/Door_S" index="1"]
 position = Vector2(0, -47)
@@ -38,6 +43,7 @@ position = Vector2(26, 185)
 destination_level_tag = "room"
 destination_door_tag = "E"
 spawn_direction = "left"
+position_door = "LEFT"
 
 [node name="Spawn" parent="Doors/Door_W" index="1"]
 position = Vector2(50, 0)

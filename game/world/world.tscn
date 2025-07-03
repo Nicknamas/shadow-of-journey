@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ryn5p4kb66xb" path="res://game/global/game_manager.gd" id="1_fr3h4"]
 [ext_resource type="Texture2D" uid="uid://cgcwl28teuo1t" path="res://assets/sprites/world/Floors_Tiles.png" id="2_6liei"]
-[ext_resource type="PackedScene" uid="uid://cnlbmd5yo020u" path="res://game/levels/dungeon/rooms/Room.tscn" id="3_anm8e"]
+[ext_resource type="PackedScene" uid="uid://dlsnfewu3k3xb" path="res://game/levels/dungeon/rooms/Room.tscn" id="3_anm8e"]
 [ext_resource type="Texture2D" uid="uid://dx54uy7sv82j" path="res://assets/sprites/elements/light-mask.png" id="4_anm8e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_anm8e"]

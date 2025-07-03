@@ -35,7 +35,7 @@ func find_closest_enemy_within_radius() -> Node2D:
 	var closest = null
 	var min_dist = aggro_radius
 	for node in get_tree().get_nodes_in_group(name_group_target):
-		if not node.has_method("global_position"):
+		if not node["global_position"]:
 			continue
 		var dist = enemy.global_position.distance_to(node.global_position)
 		if dist <= min_dist and (closest == null or dist < enemy.global_position.distance_to(closest.global_position)):
@@ -45,7 +45,7 @@ func find_closest_enemy_within_radius() -> Node2D:
 func find_closer_enemy_than(distance: float) -> Node2D:
 	var closer = null
 	for node in get_tree().get_nodes_in_group(name_group_target):
-		if not node.has_method("global_position"):
+		if not node["global_position"]:
 			continue
 		var dist = enemy.global_position.distance_to(node.global_position)
 		if dist <= aggro_radius and dist < distance:

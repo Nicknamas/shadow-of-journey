@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://jghx7260jvmu"]
 
 [ext_resource type="PackedScene" uid="uid://dmmpyl5gy4au5" path="res://game/characters/enemy/Enemy.tscn" id="1_7p6xm"]
-[ext_resource type="Script" uid="uid://bdwmpj6g15efl" path="res://game/characters/orc_melee/members/orc_melee1.gd" id="2_8twg2"]
+[ext_resource type="Script" uid="uid://c4lykeruh3nhm" path="res://game/characters/orc_melee/members/orc_melee_1.gd" id="2_8twg2"]
 [ext_resource type="Texture2D" uid="uid://bcgt7bokyxeme" path="res://assets/sprites/orc_melee1/orc1_idle_full.png" id="3_iheu2"]
 [ext_resource type="Texture2D" uid="uid://wy7876kogyju" path="res://assets/sprites/orc_melee1/orc1_run_full.png" id="4_d0t1p"]
 [ext_resource type="Script" uid="uid://d2dh07ek0m2q0" path="res://game/components/animation_move/animation_movement.gd" id="4_gye1i"]

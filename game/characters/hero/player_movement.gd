@@ -1,7 +1,22 @@
 class_name Hero extends MovementBase
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var max_health: int = 100
+@export var current_health: int = 100
+@export var damage: int = 10
 
+
+func take_damage(amount: int):
+	current_health -= amount
+	print("герой получает урон. его хп -", current_health)
+	if current_health <= 0:
+		die()
+
+
+func die():
+	queue_free()
+	
+	
 func _ready():
 	NavigationManager.on_trigger_player_spawn.connect(on_spawn)
 

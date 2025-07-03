@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmmpyl5gy4au5"]
+[gd_scene load_steps=6 format=3 uid="uid://dmmpyl5gy4au5"]
 
 [ext_resource type="Script" uid="uid://b5qp2s2nmsdgy" path="res://game/states/state_machine.gd" id="2_7h0ki"]
 [ext_resource type="Script" uid="uid://h5yc1kkc8htg" path="res://game/states/enemy_chase.gd" id="3_7h0ki"]
 [ext_resource type="Script" uid="uid://epfamlcht21t" path="res://game/states/enemy_idle.gd" id="3_taqej"]
+[ext_resource type="Script" uid="uid://cojqalr8xlhar" path="res://game/states/enemy_attack.gd" id="4_taqej"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a0akn"]
 
@@ -27,3 +28,8 @@ metadata/_custom_type_script = "uid://epfamlcht21t"
 script = ExtResource("3_7h0ki")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://h5yc1kkc8htg"
+
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_taqej")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://cojqalr8xlhar"

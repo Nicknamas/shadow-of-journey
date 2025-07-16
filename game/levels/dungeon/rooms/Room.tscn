@@ -1,6 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dlsnfewu3k3xb"]
 
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://7h8bke4tfddu" path="res://game/levels/dungeon/base/RoomBase.tscn" id="1_w2if2"]
+=======
+[ext_resource type="PackedScene" uid="uid://dtw1m2r46kidp" path="res://game/levels/dungeon/base/RoomBase.tscn" id="1_w2if2"]
+>>>>>>> 851411f2427d11a1a5517a1f5fa6b414f43ca801
 
 [node name="Room" instance=ExtResource("1_w2if2")]
 

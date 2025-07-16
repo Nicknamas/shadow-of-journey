@@ -3,17 +3,14 @@ class_name Doors extends RoomElement
 const EXIT_NAMES = ["UP", "RIGHT", "DOWN", "LEFT"]
 
 func define(exits: Dictionary) -> void:
-	print(exits)
 	for exit in self.EXIT_NAMES:
 		if exits[exit]:
-			print(exit)
 			continue
 		else:
-			var door = get_door_with_position(exit)
+			var door = get_door_with_position(exit) as Door
 			if not door:
 				continue
-			remove_child(door)
-			door.queue_free()
+			door.hide()
 
 
 func get_door_with_position(position : String):

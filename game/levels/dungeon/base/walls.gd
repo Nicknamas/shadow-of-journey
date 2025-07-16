@@ -1,4 +1,4 @@
-class_name Walls extends RoomTileMapLayer
+class_name Walls extends RoomTileMapLayerElement
 
 const EXIT_NAMES = ["UP", "RIGHT", "DOWN", "LEFT"]
 

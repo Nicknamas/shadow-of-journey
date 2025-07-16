@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://cdlmlydbrh84x"]
 
 [ext_resource type="Texture2D" uid="uid://iyyfkrmowktt" path="res://assets/sprites/world/Dungeon_Tiles.png" id="1_ael37"]
-[ext_resource type="PackedScene" uid="uid://u8f600u4jr88" path="res://game/characters/hero/Hero.tscn" id="2_a2iur"]
+[ext_resource type="PackedScene" uid="uid://dordlxhuh2rpq" path="res://game/characters/hero/hero.tscn" id="2_a2iur"]
 [ext_resource type="PackedScene" uid="uid://b022wqswmmoka" path="res://game/components/door/door.tscn" id="3_tto10"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a2iur"]
@@ -155,7 +155,7 @@ label_settings = SubResource("LabelSettings_a2iur")
 position = Vector2(319, 35)
 scale = Vector2(2.84, 2.84)
 destination_level_tag = "start"
-destination_door_tag = "E"
+destination_door_tag = "S"
 
 [node name="DoorTest" parent="." instance=ExtResource("3_tto10")]
 position = Vector2(160, 30)

@@ -1,4 +1,4 @@
-class_name RoomTileMapLayer extends TileMapLayer
+class_name RoomTileMapLayerElement extends TileMapLayer
 
 
 func define(variable) -> void:

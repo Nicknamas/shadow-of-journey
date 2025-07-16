@@ -29,17 +29,6 @@ func _init(
 	self.coords = _coords
 
 
-func _ready():
-	if NavigationManager.spawn_door_tag != null:
-		on_level_spawn(NavigationManager.spawn_door_tag)
-
-
-func on_level_spawn(destination_tag : String):
-	var door_path = "Doors/Door_" + destination_tag
-	var door = get_node(door_path) as Door
-	NavigationManager.trigger_player_spawn(door.spawn.global_position, door.spawn_direction)
-
-
 func define_init_exit(negative_direction : Vector2i) -> void:
 	self.init_exit = negative_direction
 

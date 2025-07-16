@@ -24,7 +24,7 @@ func init_exits_of_current_room() -> void:
 	var doors = room.get_node(NAME_NODE_DOORS) as Doors
 	var room_constructor = room.get_node(NAME_NODE_CONSTRUCTOR) as RoomConstuctor
 	
-	if room_constructor.is_cached:
+	if room_constructor.is_defined:
 		return
 	
 	for exit in self.exits_name:
@@ -58,17 +58,11 @@ func get_coords_room_in_string(room : Room) -> String:
 
 
 func _on_navigate(level_tag : String) -> void:
-	var x : int
-	var y : int
 	var splitted_level_tag = level_tag.split("")
 	if "start" in level_tag:
 		self.current_room = self.procedure_generator.start
 		return
-	if "-" in level_tag:
-		x = int(splitted_level_tag[-3])
-		y = -int(splitted_level_tag[-1])
-	else:
-		x = int(splitted_level_tag[-2])
-		y = int(splitted_level_tag[-1])
+	var x = int(splitted_level_tag[-2])
+	var y = int(splitted_level_tag[-1])
 	self.current_room = self.dungeon[x][y]
 	self.init_exits_of_current_room()

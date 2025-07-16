@@ -14,6 +14,7 @@ func _ready() -> void:
 		super.print_dungeons()
 
 
+
 func generate_dungeon() -> void:
 	super.generate_dungeon()
 	self.generate_paths(start, critical_path_length, ROOM_TYPES.CRITICAL)

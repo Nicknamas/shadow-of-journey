@@ -12,8 +12,6 @@ func _physics_process(delta: float) -> void:
 	if not idle:
 		self.last_facing_direction = entity.velocity.normalized()
 
-	self.animation_tree.set("parameters/conditions/idle", idle)
-	self.animation_tree.set("parameters/conditions/run", not idle)
-
 	self.animation_tree.set("parameters/Idle/blend_position", self.last_facing_direction)
 	self.animation_tree.set("parameters/Run/blend_position", self.last_facing_direction)
+	self.animation_tree.set("parameters/Attack/blend_position", self.last_facing_direction)

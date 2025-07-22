@@ -14,14 +14,17 @@ func enter():
 		aggro_target = enemy.get_meta("aggro_target")
 	attack_timer = 0.0
 	enemy.velocity = Vector2.ZERO
+	enemy.attacking = false
 
 func update(delta: float):
 	if not aggro_target or not is_instance_valid(aggro_target):
+		enemy.attacking = false
 		emit_signal("transitioned", self, "EnemyIdle")
 		return
 
 	var dist = enemy.global_position.distance_to(aggro_target.global_position)
 	if dist > attack_radius:
+		enemy.attacking = false
 		emit_signal("transitioned", self, "EnemyChase")
 		return
 
@@ -36,3 +39,4 @@ func physics_update(_delta):
 func perform_attack():
 	if aggro_target.has_method("take_damage"):
 		aggro_target.call("take_damage", enemy.damage)
+	enemy.attacking = true

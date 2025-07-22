@@ -10,7 +10,4 @@ class_name Door extends Area2D
 
 func _on_body_entered(body):
 	if body is Hero:
-		print("self name: ", self)
-		print(self.global_position)
-		print(body.global_position)
 		NavigationManager.go_to_level(destination_level_tag, destination_door_tag)

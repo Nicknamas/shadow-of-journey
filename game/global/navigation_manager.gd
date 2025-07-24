@@ -27,6 +27,8 @@ func go_to_level(level_tag : String, destination_door_tag : String) -> void:
 		self.load_location()
 	elif self.scene_to_load != null:
 		self.change_room()
+		on_navigate.emit(level_tag)
+
 
 func transition() -> void:
 	TransitionScreen.transition()
@@ -65,11 +67,15 @@ func change_room() -> void:
 	var new_room = get_new_room()
 	#if not self.cached_rooms.has(self.level_tag):
 		#cach_room(new_room)
-	level.remove_child(old_room)
-	old_room.queue_free()
-	level.add_child(new_room)
-	self.change_hero_position(door.spawn.global_position, new_room)
-	on_navigate.emit(level_tag)
+	self.switch_rooms(level, old_room, new_room)
+	self.change_hero_position(door.spawn.global_position)
+	self.change_hero_parent(new_room)
+
+
+func switch_rooms(parent : Node, old : Node, new : Node) -> void:
+	parent.remove_child(old)
+	old.queue_free()
+	parent.add_child(new)
 
 
 func get_door(room: Node) -> Door:
@@ -79,10 +85,19 @@ func get_door(room: Node) -> Door:
 	return door
 
 
-func change_hero_position(spawn_position: Vector2, new_parent: Node) -> void:
-	var hero = get_tree().get_first_node_in_group("Hero") as Hero
+func change_hero_position(spawn_position: Vector2) -> void:
+	var hero = self.get_hero()
 	hero.global_position = spawn_position
+
+
+func change_hero_parent(new_parent) -> void:
+	var hero = get_hero()
 	hero.reparent(new_parent)
+
+
+func get_hero() -> Hero:
+	var hero = get_tree().get_first_node_in_group("Hero") as Hero
+	return hero
 
 
 func get_new_room() -> Node:

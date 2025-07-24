@@ -1,114 +1,22 @@
-[gd_scene load_steps=43 format=3 uid="uid://jghx7260jvmu"]
+[gd_scene load_steps=24 format=3 uid="uid://jghx7260jvmu"]
 
 [ext_resource type="PackedScene" uid="uid://dmmpyl5gy4au5" path="res://game/characters/enemy/Enemy.tscn" id="1_7p6xm"]
 [ext_resource type="Script" uid="uid://c4lykeruh3nhm" path="res://game/characters/orc_melee/members/orc_melee_1.gd" id="2_8twg2"]
+[ext_resource type="Script" uid="uid://cy2qa0cuqa51m" path="res://game/components/animation_move/animation_enemy.gd" id="2_j8vkv"]
 [ext_resource type="Texture2D" uid="uid://bcgt7bokyxeme" path="res://assets/sprites/orc_melee1/orc1_idle_full.png" id="3_iheu2"]
 [ext_resource type="Texture2D" uid="uid://wy7876kogyju" path="res://assets/sprites/orc_melee1/orc1_run_full.png" id="4_d0t1p"]
-[ext_resource type="Script" uid="uid://d2dh07ek0m2q0" path="res://game/components/animation_move/animation_movement.gd" id="4_gye1i"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://kmxxdy4dj3u5" path="res://game/characters/orc_melee/members/OrcMelee1_anim_states.tres" id="4_vnt1j"]
 [ext_resource type="Texture2D" uid="uid://bwq0wv5gosxv7" path="res://assets/sprites/orc_melee1/orc1_attack_full.png" id="5_j8vkv"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xdet1"]
-animation = &"attack_down"
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_vnt1j"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4di4n"]
-animation = &"idle_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_16qcn"]
-animation = &"attack_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bq418"]
-animation = &"attack_left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_se0y6"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_xdet1")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_4di4n")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_16qcn")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_bq418")
-blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j8vkv"]
-animation = &"idle_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vnt1j"]
-animation = &"idle_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lpaga"]
-animation = &"idle_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7y3ln"]
-animation = &"idle_left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_4ksfa"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_j8vkv")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_vnt1j")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_lpaga")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_7y3ln")
-blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d0t1p"]
-animation = &"run_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ksfa"]
-animation = &"run_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nfs3c"]
-animation = &"run_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8h1ur"]
-animation = &"run_up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nfs3c"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_d0t1p")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_4ksfa")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_nfs3c")
-blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_8h1ur")
-blend_point_3/pos = Vector2(0, -1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d0t1p"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j8vkv"]
-advance_mode = 2
-advance_expression = "!velocity"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vnt1j"]
-advance_mode = 2
-advance_expression = "velocity"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lpaga"]
-advance_mode = 2
-advance_expression = "attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7y3ln"]
-advance_mode = 2
-advance_condition = &"idle"
-advance_expression = "!attacking"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ksfa"]
-advance_mode = 2
-advance_expression = "attacking"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gye1i"]
-states/Attack/node = SubResource("AnimationNodeBlendSpace2D_se0y6")
-states/Attack/position = Vector2(590, 145)
-states/Idle/node = SubResource("AnimationNodeBlendSpace2D_4ksfa")
-states/Idle/position = Vector2(436, 65)
-states/Run/node = SubResource("AnimationNodeBlendSpace2D_nfs3c")
-states/Run/position = Vector2(436, 164)
-states/Start/position = Vector2(203, 126)
-transitions = ["Start", "Run", SubResource("AnimationNodeStateMachineTransition_d0t1p"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_j8vkv"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_vnt1j"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_lpaga"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_7y3ln"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_4ksfa")]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lpaga"]
+nodes/OrcMelee1States/node = ExtResource("4_vnt1j")
+nodes/OrcMelee1States/position = Vector2(0, 60)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_vnt1j")
+nodes/TimeScale/position = Vector2(260, 20)
+nodes/output/position = Vector2(480, 80)
+node_connections = [&"TimeScale", 0, &"OrcMelee1States", &"output", 0, &"TimeScale"]
 
 [sub_resource type="Animation" id="Animation_d0t1p"]
 length = 0.001
@@ -673,21 +581,22 @@ frame = 16
 move_speed = 50.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="3"]
-tree_root = SubResource("AnimationNodeStateMachine_gye1i")
+tree_root = SubResource("AnimationNodeBlendTree_lpaga")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/idle = false
-parameters/Attack/blend_position = Vector2(-0.0775577, -0.479821)
-parameters/Idle/blend_position = Vector2(-0.551155, -0.0941705)
-parameters/Run/blend_position = Vector2(0.0861909, 0.263736)
+parameters/OrcMelee1States/conditions/idle = false
+parameters/OrcMelee1States/Attack/blend_position = Vector2(0.0178282, -0.252747)
+parameters/OrcMelee1States/Idle/blend_position = Vector2(0, 0)
+parameters/OrcMelee1States/Run/blend_position = Vector2(0, 0)
+parameters/TimeScale/scale = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_7y3ln")
 }
 
-[node name="AnimationMovement" type="Node2D" parent="." index="5" node_paths=PackedStringArray("animation_tree", "entity")]
-script = ExtResource("4_gye1i")
+[node name="AnimationEnemy" type="Node2D" parent="." index="5" node_paths=PackedStringArray("animation_tree", "entity")]
+script = ExtResource("2_j8vkv")
 animation_tree = NodePath("../AnimationTree")
 entity = NodePath("..")
-metadata/_custom_type_script = "uid://d2dh07ek0m2q0"
+metadata/_custom_type_script = "uid://cy2qa0cuqa51m"

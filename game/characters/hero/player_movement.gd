@@ -5,6 +5,9 @@ class_name Hero extends MovementBase
 @export var current_health: int = 100
 @export var damage: int = 10
 
+var attacking := false
+@export var attack_duration := 0.5
+
 
 func take_damage(amount: int):
 	current_health -= amount
@@ -16,9 +19,6 @@ func take_damage(amount: int):
 func die():
 	queue_free()
 	
-	
-func _ready():
-	NavigationManager.on_trigger_player_spawn.connect(on_spawn)
 
 
 func _physics_process(delta):
@@ -26,10 +26,20 @@ func _physics_process(delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
-	super._physics_process(delta)
+	
+	if Input.is_action_just_pressed("attack") and not attacking:
+		start_attack()
+	
+	super._physics_process(delta) 
 
 
-func on_spawn(position : Vector2, direction : String) -> void:
-	self.global_position = position
-	self.animation_player.play("walk_" + direction)
-	self.animation_player.stop()
+
+
+func start_attack():
+	attacking = true
+	print("Атака начата")
+	
+	await get_tree().create_timer(attack_duration).timeout
+
+	attacking = false
+	print("Атака завершена")

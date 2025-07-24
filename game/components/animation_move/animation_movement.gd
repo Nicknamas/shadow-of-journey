@@ -7,11 +7,12 @@ var last_facing_direction := Vector2(0, -1)
 
 
 func _physics_process(delta: float) -> void:
-	var idle : bool = not entity.velocity
+	
+	var idle = !entity.velocity
 
-	if not idle:
+	if !idle:
 		self.last_facing_direction = entity.velocity.normalized()
 
-	self.animation_tree.set("parameters/Idle/blend_position", self.last_facing_direction)
 	self.animation_tree.set("parameters/Run/blend_position", self.last_facing_direction)
+	self.animation_tree.set("parameters/Idle/blend_position", self.last_facing_direction)
 	self.animation_tree.set("parameters/Attack/blend_position", self.last_facing_direction)

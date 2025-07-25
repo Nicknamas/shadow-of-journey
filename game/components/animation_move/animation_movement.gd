@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	
 	var idle = !entity.velocity
 
-	if !idle:
+	if not idle:
 		self.last_facing_direction = entity.velocity.normalized()
 
 	self.animation_tree.set("parameters/Run/blend_position", self.last_facing_direction)

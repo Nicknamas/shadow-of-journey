@@ -9,6 +9,10 @@ var attacking := false
 @export var attack_duration := 0.5
 
 
+func _ready():
+	NavigationManager.on_trigger_player_spawn.connect(on_spawn)
+
+
 func take_damage(amount: int):
 	current_health -= amount
 	print("герой получает урон. его хп -", current_health)
@@ -17,7 +21,7 @@ func take_damage(amount: int):
 
 
 func die():
-	queue_free()
+	pass
 	
 
 
@@ -33,6 +37,10 @@ func _physics_process(delta):
 	super._physics_process(delta) 
 
 
+func on_spawn(position : Vector2, direction : String) -> void:
+	self.global_position = position
+	self.animation_player.play("walk_" + direction)
+	self.animation_player.stop()
 
 
 func start_attack():

@@ -44,6 +44,7 @@ enabled=PackedStringArray()
 [global_group]
 
 Hero=""
+Enemies=""
 
 [input]
 

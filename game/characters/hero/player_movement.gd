@@ -4,6 +4,8 @@ class_name Hero extends MovementBase
 @export var max_health: int = 100
 @export var current_health: int = 100
 @export var damage: int = 10
+@export var attack_radius := 40.0
+@export var attack_angle_deg := 60.0
 
 var attacking := false
 @export var attack_duration := 0.5
@@ -15,7 +17,7 @@ func _ready():
 
 func take_damage(amount: int):
 	current_health -= amount
-	print("герой получает урон. его хп -", current_health)
+	print("герой получает урон. его хп - ", current_health)
 	if current_health <= 0:
 		die()
 
@@ -48,6 +50,27 @@ func start_attack():
 	print("Атака начата")
 	
 	await get_tree().create_timer(attack_duration).timeout
+	perform_attack_check()
 
 	attacking = false
 	print("Атака завершена")
+
+
+func perform_attack_check():
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+
+	for enemy in enemies:
+		if not enemy or not enemy.has_method("take_damage"):
+			continue
+
+		var to_enemy = enemy.global_position - global_position
+		var distance = to_enemy.length()
+		if distance > attack_radius:
+			continue
+
+		var angle_to_enemy = direction.angle_to(to_enemy.normalized())
+		if abs(rad_to_deg(angle_to_enemy)) > attack_angle_deg / 2.0:
+			continue
+
+		enemy.take_damage(damage)
+		print("урон нанесен")

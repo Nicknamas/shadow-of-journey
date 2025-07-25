@@ -6,17 +6,21 @@ extends CharacterBody2D
 
 var attacking := false
 
+
 func take_damage(amount: int):
 	current_health -= amount
 	print("орк получает урон. его хп - ", current_health)
 	if current_health <= 0:
 		die()
 
+
 func die():
 	queue_free()
 
+
 func _physics_process(_delta):
 	move_and_slide()
+
 
 func end_attack():
 	attacking = false

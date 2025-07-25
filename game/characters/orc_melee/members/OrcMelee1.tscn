@@ -566,7 +566,7 @@ _data = {
 &"run_up": SubResource("Animation_7y3ln")
 }
 
-[node name="OrcMelee1" instance=ExtResource("1_7p6xm")]
+[node name="OrcMelee1" groups=["Enemies"] instance=ExtResource("1_7p6xm")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_8twg2")
